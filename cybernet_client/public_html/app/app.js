@@ -25,6 +25,8 @@ $(function() {
 			console.log("graph");
 			var l = new GraphLayout();
 			App.content.show(l);
+			var graph = new Graph();
+			graph.id = 1;
 			var view = new GraphView();
 			view.on('show', function() {
 				var json = [
@@ -635,7 +637,11 @@ $(function() {
 					}
 				});
 			});
-			l.graph.show(view);
+			graph.fetch({
+				success: function() {
+					l.graph.show(view);
+				}
+			});
 		};
 
 		return CyberNet;
