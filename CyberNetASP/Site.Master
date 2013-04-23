@@ -50,7 +50,7 @@
 	    <div id="subheader" class="style1">
 			    <a id="A1" href="~/Default.aspx" runat="server" title="">Главная</a>
 			    <a id="A3" href="~/About.aspx" runat="server" title="">О игре</a>
-			    <a id="A6" href="~/JSClient/index.html" runat="server" title="">Тест</a>
+			    <a id="A6" href="~/JSClient/index.html" runat="server" title="">Играть</a>
 	    </div>	
 
     	<div id="content">
