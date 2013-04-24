@@ -4,10 +4,13 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using MySql.Data.MySqlClient;
 
-namespace Bend.Util {
+namespace Bend.Util 
+{
 
-    public class HttpProcessor {
+    public class HttpProcessor 
+	{
         public TcpClient socket;        
         public HttpServer srv;
 
@@ -22,16 +25,19 @@ namespace Bend.Util {
 
         private static int MAX_POST_SIZE = 10 * 1024 * 1024; // 10MB
 
-        public HttpProcessor(TcpClient s, HttpServer srv) {
+        public HttpProcessor(TcpClient s, HttpServer srv) 
+		{
             this.socket = s;
             this.srv = srv;                   
         }
         
 
-        private string streamReadLine(Stream inputStream) {
+        private string streamReadLine(Stream inputStream) 
+		{
             int next_char;
             string data = "";
-            while (true) {
+            while (true) 
+			{
                 next_char = inputStream.ReadByte();
                 if (next_char == '\n') { break; }
                 if (next_char == '\r') { continue; }
@@ -40,22 +46,29 @@ namespace Bend.Util {
             }            
             return data;
         }
-        public void process() {                        
+        public void process() 
+		{                        
             // we can't use a StreamReader for input, because it buffers up extra data on us inside it's
             // "processed" view of the world, and we want the data raw after the headers
             inputStream = new BufferedStream(socket.GetStream());
 
             // we probably shouldn't be using a streamwriter for all output from handlers either
             outputStream = new StreamWriter(new BufferedStream(socket.GetStream()));
-            try {
+            try 
+			{
                 parseRequest();
                 readHeaders();
-                if (http_method.Equals("GET")) {
+                if (http_method.Equals("GET")) 
+				{
                     handleGETRequest();
-                } else if (http_method.Equals("POST")) {
+                } 
+				else if (http_method.Equals("POST")) 
+				{
                     handlePOSTRequest();
                 }
-            } catch (Exception e) {
+            } 
+			catch (Exception e) 
+			{
                 Console.WriteLine("Exception: " + e.ToString());
                 writeFailure();
             }
@@ -65,7 +78,8 @@ namespace Bend.Util {
             socket.Close();             
         }
 
-        public void parseRequest() {
+        public void parseRequest() 
+		{
             String request = streamReadLine(inputStream);
             string[] tokens = request.Split(' ');
             if (tokens.Length != 3) {
@@ -78,7 +92,8 @@ namespace Bend.Util {
             Console.WriteLine("starting: " + request);
         }
 
-        public void readHeaders() {
+        public void readHeaders() 
+		{
             Console.WriteLine("readHeaders()");
             String line;
             while ((line = streamReadLine(inputStream)) != null) {
@@ -103,12 +118,14 @@ namespace Bend.Util {
             }
         }
 
-        public void handleGETRequest() {
+        public void handleGETRequest() 
+		{
             srv.handleGETRequest(this);
         }
 
         private const int BUF_SIZE = 4096;
-        public void handlePOSTRequest() {
+        public void handlePOSTRequest() 
+		{
             // this post data processing just reads everything into a memory stream.
             // this is fine for smallish things, but for large stuff we should really
             // hand an input stream to the request processor. However, the input stream 
@@ -118,24 +135,31 @@ namespace Bend.Util {
             Console.WriteLine("get post data start");
             int content_len = 0;
             MemoryStream ms = new MemoryStream();
-            if (this.httpHeaders.ContainsKey("Content-Length")) {
+            if (this.httpHeaders.ContainsKey("Content-Length")) 
+			{
                  content_len = Convert.ToInt32(this.httpHeaders["Content-Length"]);
-                 if (content_len > MAX_POST_SIZE) {
+                 if (content_len > MAX_POST_SIZE) 
+				 {
                      throw new Exception(
                          String.Format("POST Content-Length({0}) too big for this simple server",
                            content_len));
                  }
                  byte[] buf = new byte[BUF_SIZE];              
                  int to_read = content_len;
-                 while (to_read > 0) {  
+                 while (to_read > 0) 
+				 {  
                      Console.WriteLine("starting Read, to_read={0}",to_read);
 
                      int numread = this.inputStream.Read(buf, 0, Math.Min(BUF_SIZE, to_read));
                      Console.WriteLine("read finished, numread={0}", numread);
-                     if (numread == 0) {
-                         if (to_read == 0) {
+                     if (numread == 0) 
+					 {
+                         if (to_read == 0) 
+						 {
                              break;
-                         } else {
+                         } 
+						 else 
+						 {
                              throw new Exception("client disconnected during post");
                          }
                      }
@@ -149,21 +173,24 @@ namespace Bend.Util {
 
         }
 
-        public void writeSuccess() {
+        public void writeSuccess() 
+		{
             outputStream.Write("HTTP/1.0 200 OK\n");
             outputStream.Write("Content-Type: text/html\n");
             outputStream.Write("Connection: close\n");
             outputStream.Write("\n");
         }
 
-        public void writeFailure() {
+        public void writeFailure() 
+		{
             outputStream.Write("HTTP/1.0 404 File not found\n");
             outputStream.Write("Connection: close\n");
             outputStream.Write("\n");
         }
     }
 
-    public abstract class HttpServer {
+    public abstract class HttpServer 
+	{
 
         protected int port;
         TcpListener listener;
@@ -173,10 +200,12 @@ namespace Bend.Util {
             this.port = port;
         }
 
-        public void listen() {
+        public void listen() 
+		{
             listener = new TcpListener(port);
             listener.Start();
-            while (is_active) {                
+            while (is_active) 
+			{                
                 TcpClient s = listener.AcceptTcpClient();
                 HttpProcessor processor = new HttpProcessor(s, this);
                 Thread thread = new Thread(new ThreadStart(processor.process));
@@ -189,11 +218,14 @@ namespace Bend.Util {
         public abstract void handlePOSTRequest(HttpProcessor p, StreamReader inputData);
     }
 
-    public class MyHttpServer : HttpServer {
+    public class MyHttpServer : HttpServer 
+	{
         public MyHttpServer(int port)
-            : base(port) {
+            : base(port) 
+		{
         }
-        public override void handleGETRequest(HttpProcessor p) {
+        public override void handleGETRequest(HttpProcessor p) 
+		{
             Console.WriteLine("request: {0}", p.http_url);
             p.writeSuccess();
 			p.outputStream.WriteLine("{}");
@@ -209,7 +241,8 @@ namespace Bend.Util {
             p.outputStream.WriteLine("</form>");*/
         }
 
-        public override void handlePOSTRequest(HttpProcessor p, StreamReader inputData) {
+        public override void handlePOSTRequest(HttpProcessor p, StreamReader inputData) 
+		{
             Console.WriteLine("POST request: {0}", p.http_url);
             string data = inputData.ReadToEnd();
 
@@ -219,18 +252,51 @@ namespace Bend.Util {
             
 
         }
+
+		public void ConectDB()
+		{
+			MySqlCommand command = new MySqlCommand(); ;
+			string connectionString, commandString;
+			connectionString = "Data source=localhost;UserId=root;Password=nt[yj14;database=CyberNetDB;";
+			MySqlConnection connection = new MySqlConnection(connectionString);
+			commandString = "SELECT * FROM Test;";
+			command.CommandText = commandString;
+			command.Connection = connection;
+			MySqlDataReader reader;
+			try
+			{
+				command.Connection.Open();
+				reader = command.ExecuteReader();
+				while (reader.Read())
+				{
+					int ID = (int)reader["ID"];
+					string Name = (string)reader["Name"];
+				}
+				reader.Close();
+			}
+			catch (MySqlException ex)
+			{
+				Console.WriteLine("Error: \r\n{0}", ex.ToString());
+			}
+			finally
+			{
+				command.Connection.Close();
+			}
+		}
     }
 
-    public class TestMain {
-        public static int Main(String[] args) {
-            HttpServer httpServer;
-            if (args.GetLength(0) > 0) {
-                httpServer = new MyHttpServer(Convert.ToInt16(args[0]));
-            } else {
-                httpServer = new MyHttpServer(8081);
-            }
+    public class TestMain 
+	{
+        public static int Main(String[] args) 
+		{
+			MyHttpServer httpServer = new MyHttpServer(8081);
+
+			//httpServer.ConectDB();
+			
             Thread thread = new Thread(new ThreadStart(httpServer.listen));
             thread.Start();
+			
+
             return 0;
         }
 
