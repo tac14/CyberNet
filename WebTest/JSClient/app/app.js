@@ -7,662 +7,335 @@ $(function() {
 	App.CyberNet = function() {
 
 		var CyberNet = {};
-
 		var GraphLayout = Backbone.Marionette.Layout.extend({
 			template: "#graph-layout-template",
 			regions: {
 				graph: '#graph'
 			}
 		});
-
 		CyberNet.actionIndex = function() {
 			var v = new MainView();
 			App.content.show(v);
 			console.log('index');
 		};
-
 		CyberNet.actionGraph = function() {
+
+			var graph = new Graph();
+
+
+
 			console.log("graph");
 			var l = new GraphLayout();
 			App.content.show(l);
-			var graph = new Graph();
+
 			graph.id = 1;
 			var view = new GraphView();
 			view.on('show', function() {
-				var json = [
-					{
-						"adjacencies": [
-							{
-								"nodeTo": "graphnode1",
-								"nodeFrom": "graphnode0",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode3",
-								"nodeFrom": "graphnode0",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode2",
-								"nodeFrom": "graphnode0",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode4",
-								"nodeFrom": "graphnode0",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode10",
-								"nodeFrom": "graphnode0",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode6",
-								"nodeFrom": "graphnode0",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode11",
-								"nodeFrom": "graphnode0",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode12",
-								"nodeFrom": "graphnode0",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode13",
-								"nodeFrom": "graphnode0",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode14",
-								"nodeFrom": "graphnode0",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode15",
-								"nodeFrom": "graphnode0",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode16",
-								"nodeFrom": "graphnode0",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode17",
-								"nodeFrom": "graphnode0",
-								"data": {}
-							}
-						],
-						"data": {
-							"$color": "#83548B",
-							"$type": "circle"
-						},
-						"id": "graphnode0",
-						"name": "graphnode0"
-					},
-					{
-						"adjacencies": [
-							{
-								"nodeTo": "graphnode2",
-								"nodeFrom": "graphnode1",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode3",
-								"nodeFrom": "graphnode1",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode4",
-								"nodeFrom": "graphnode1",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode5",
-								"nodeFrom": "graphnode1",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode6",
-								"nodeFrom": "graphnode1",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode7",
-								"nodeFrom": "graphnode1",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode8",
-								"nodeFrom": "graphnode1",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode9",
-								"nodeFrom": "graphnode1",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode10",
-								"nodeFrom": "graphnode1",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode11",
-								"nodeFrom": "graphnode1",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode12",
-								"nodeFrom": "graphnode1",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode13",
-								"nodeFrom": "graphnode1",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode14",
-								"nodeFrom": "graphnode1",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode15",
-								"nodeFrom": "graphnode1",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode16",
-								"nodeFrom": "graphnode1",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode17",
-								"nodeFrom": "graphnode1",
-								"data": {}
-							}
-						],
-						"data": {
-							"$color": "#83548B",
-							"$type": "star"
-						},
-						"id": "graphnode1",
-						"name": "graphnode1"
-					},
-					{
-						"adjacencies": [
-							{
-								"nodeTo": "graphnode3",
-								"nodeFrom": "graphnode2",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode5",
-								"nodeFrom": "graphnode2",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode9",
-								"nodeFrom": "graphnode2",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode18",
-								"nodeFrom": "graphnode2",
-								"data": {}
-							}
-						],
-						"data": {
-							"$color": "#EBB056",
-							"$type": "circle"
-						},
-						"id": "graphnode2",
-						"name": "graphnode2"
-					},
-					{
-						"adjacencies": [
-							{
-								"nodeTo": "graphnode5",
-								"nodeFrom": "graphnode3",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode9",
-								"nodeFrom": "graphnode3",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode10",
-								"nodeFrom": "graphnode3",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode6",
-								"nodeFrom": "graphnode3",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode11",
-								"nodeFrom": "graphnode3",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode12",
-								"nodeFrom": "graphnode3",
-								"data": {}
-							}
-						],
-						"data": {
-							"$color": "#70A35E",
-							"$type": "triangle"
-						},
-						"id": "graphnode3",
-						"name": "graphnode3"
-					},
-					{
-						"adjacencies": [],
-						"data": {
-							"$color": "#70A35E",
-							"$type": "star"
-						},
-						"id": "graphnode4",
-						"name": "graphnode4"
-					},
-					{
-						"adjacencies": [
-							{
-								"nodeTo": "graphnode9",
-								"nodeFrom": "graphnode5",
-								"data": {}
-							}
-						],
-						"data": {
-							"$color": "#416D9C",
-							"$type": "star"
-						},
-						"id": "graphnode5",
-						"name": "graphnode5"
-					},
-					{
-						"adjacencies": [
-							{
-								"nodeTo": "graphnode10",
-								"nodeFrom": "graphnode6",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode11",
-								"nodeFrom": "graphnode6",
-								"data": {}
-							}
-						],
-						"data": {
-							"$color": "#416D9C",
-							"$type": "star"
-						},
-						"id": "graphnode6",
-						"name": "graphnode6"
-					},
-					{
-						"adjacencies": [],
-						"data": {
-							"$color": "#416D9C",
-							"$type": "triangle"
-						},
-						"id": "graphnode7",
-						"name": "graphnode7"
-					},
-					{
-						"adjacencies": [],
-						"data": {
-							"$color": "#EBB056",
-							"$type": "star"
-						},
-						"id": "graphnode8",
-						"name": "graphnode8"
-					},
-					{
-						"adjacencies": [],
-						"data": {
-							"$color": "#70A35E",
-							"$type": "triangle"
-						},
-						"id": "graphnode9",
-						"name": "graphnode9"
-					},
-					{
-						"adjacencies": [
-							{
-								"nodeTo": "graphnode11",
-								"nodeFrom": "graphnode10",
-								"data": {}
-							}
-						],
-						"data": {
-							"$color": "#83548B",
-							"$type": "triangle"
-						},
-						"id": "graphnode10",
-						"name": "graphnode10"
-					},
-					{
-						"adjacencies": [],
-						"data": {
-							"$color": "#416D9C",
-							"$type": "triangle"
-						},
-						"id": "graphnode11",
-						"name": "graphnode11"
-					},
-					{
-						"adjacencies": [],
-						"data": {
-							"$color": "#70A35E",
-							"$type": "square"
-						},
-						"id": "graphnode12",
-						"name": "graphnode12"
-					},
-					{
-						"adjacencies": [
-							{
-								"nodeTo": "graphnode14",
-								"nodeFrom": "graphnode13",
-								"data": {}
-							}
-						],
-						"data": {
-							"$color": "#416D9C",
-							"$type": "square"
-						},
-						"id": "graphnode13",
-						"name": "graphnode13"
-					},
-					{
-						"adjacencies": [],
-						"data": {
-							"$color": "#70A35E",
-							"$type": "square"
-						},
-						"id": "graphnode14",
-						"name": "graphnode14"
-					},
-					{
-						"adjacencies": [
-							{
-								"nodeTo": "graphnode16",
-								"nodeFrom": "graphnode15",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode17",
-								"nodeFrom": "graphnode15",
-								"data": {}
-							}
-						],
-						"data": {
-							"$color": "#C74243",
-							"$type": "circle"
-						},
-						"id": "graphnode15",
-						"name": "graphnode15"
-					},
-					{
-						"adjacencies": [
-							{
-								"nodeTo": "graphnode17",
-								"nodeFrom": "graphnode16",
-								"data": {}
-							}
-						],
-						"data": {
-							"$color": "#EBB056",
-							"$type": "circle"
-						},
-						"id": "graphnode16",
-						"name": "graphnode16"
-					},
-					{
-						"adjacencies": [],
-						"data": {
-							"$color": "#83548B",
-							"$type": "triangle"
-						},
-						"id": "graphnode17",
-						"name": "graphnode17"
-					},
-					{
-						"adjacencies": [
-							{
-								"nodeTo": "graphnode19",
-								"nodeFrom": "graphnode18",
-								"data": {}
-							},
-							{
-								"nodeTo": "graphnode20",
-								"nodeFrom": "graphnode18",
-								"data": {}
-							}
-						],
-						"data": {
-							"$color": "#C74243",
-							"$type": "circle"
-						},
-						"id": "graphnode18",
-						"name": "graphnode18"
-					},
-					{
-						"adjacencies": [],
-						"data": {
-							"$color": "#EBB056",
-							"$type": "star"
-						},
-						"id": "graphnode19",
-						"name": "graphnode19"
-					},
-					{
-						"adjacencies": [],
-						"data": {
-							"$color": "#416D9C",
-							"$type": "circle"
-						},
-						"id": "graphnode20",
-						"name": "graphnode20"
-					}
-				];
-				var fd = new $jit.ForceDirected({
-					//id of the visualization container  
-					injectInto: 'infovis',
-					//Enable zooming and panning  
-					//with scrolling and DnD  
-					Navigation: {
-						enable: true,
-						type: 'Native',
-						//Enable panning events only if we're dragging the empty  
-						//canvas (and not a node).  
-						panning: 'avoid nodes',
-						zooming: 10 //zoom speed. higher is more sensible  
-					},
-					// Change node and edge styles such as  
-					// color and width.  
-					// These properties are also set per node  
-					// with dollar prefixed data-properties in the  
-					// JSON structure.  
-					Node: {
-						overridable: true,
-						dim: 7
-					},
-					Edge: {
-						overridable: true,
-						color: '#23A4FF',
-						lineWidth: 0.4
-					},
-					// Add node events  
-					Events: {
-						enable: true,
-						type: 'Native',
-						//Change cursor style when hovering a node  
-						onMouseEnter: function() {
-							fd.canvas.getElement().style.cursor = 'move';
-						},
-						onMouseLeave: function() {
-							fd.canvas.getElement().style.cursor = '';
-						},
-						//Update node positions when dragged  
-						onDragMove: function(node, eventInfo, e) {
-							var pos = eventInfo.getPos();
-							node.pos.setc(pos.x, pos.y);
-							fd.plot();
-						},
-						//Implement the same handler for touchscreens  
-						onTouchMove: function(node, eventInfo, e) {
-							$jit.util.event.stop(e); //stop default touchmove event  
-							this.onDragMove(node, eventInfo, e);
-						}
-					},
-					//Number of iterations for the FD algorithm  
-					iterations: 200,
-					//Edge length  
-					levelDistance: 130,
-					// This method is only triggered  
-					// on label creation and only for DOM labels (not native canvas ones).  
-					onCreateLabel: function(domElement, node) {
-						// Create a 'name' and 'close' buttons and add them  
-						// to the main node label  
-						var nameContainer = document.createElement('span'),
-								closeButton = document.createElement('span'),
-								style = nameContainer.style;
-						nameContainer.className = 'name';
-						nameContainer.innerHTML = node.name;
-						closeButton.className = 'close';
-						closeButton.innerHTML = 'x';
-						domElement.appendChild(nameContainer);
-						domElement.appendChild(closeButton);
-						style.fontSize = "0.8em";
-						style.color = "#ddd";
-						//Fade the node and its connections when  
-						//clicking the close button  
-						closeButton.onclick = function() {
-							node.setData('alpha', 0, 'end');
-							node.eachAdjacency(function(adj) {
-								adj.setData('alpha', 0, 'end');
-							});
-							fd.fx.animate({
-								modes: ['node-property:alpha',
-									'edge-property:alpha'],
-								duration: 500
-							});
-						};
-						//Toggle a node selection when clicking  
-						//its name. This is done by animating some  
-						//node styles like its dimension and the color  
-						//and lineWidth of its adjacencies.  
-						nameContainer.onclick = function() {
-							//set final styles  
-							fd.graph.eachNode(function(n) {
-								if (n.id != node.id)
-									delete n.selected;
-								n.setData('dim', 7, 'end');
-								n.eachAdjacency(function(adj) {
-									adj.setDataset('end', {
-										lineWidth: 0.4,
-										color: '#23a4ff'
-									});
-								});
-							});
-							if (!node.selected) {
-								node.selected = true;
-								node.setData('dim', 17, 'end');
-								node.eachAdjacency(function(adj) {
-									adj.setDataset('end', {
-										lineWidth: 3,
-										color: '#36acfb'
-									});
-								});
-							} else {
-								delete node.selected;
-							}
-							//trigger animation to final styles  
-							fd.fx.animate({
-								modes: ['node-property:dim',
-									'edge-property:lineWidth:color'],
-								duration: 500
-							});
-							// Build the right column relations list.  
-							// This is done by traversing the clicked node connections.  
-							var html = "<h4>" + node.name + "</h4><b> connections:</b><ul><li>",
-									list = [];
-							node.eachAdjacency(function(adj) {
-								if (adj.getData('alpha'))
-									list.push(adj.nodeTo.name);
-							});
-							//append connections information  
-							$jit.id('inner-details').innerHTML = html + list.join("</li><li>") + "</li></ul>";
-						};
-					},
-					// Change node styles when DOM labels are placed  
-					// or moved.  
-					onPlaceLabel: function(domElement, node) {
-						var style = domElement.style;
-						var left = parseInt(style.left);
-						var top = parseInt(style.top);
-						var w = domElement.offsetWidth;
-						style.left = (left - w / 2) + 'px';
-						style.top = (top + 10) + 'px';
-						style.display = '';
-					}
-				});
-// load JSON data.  
-				fd.loadJSON(json);
-// compute positions incrementally and animate.  
-				fd.computeIncremental({
-					iter: 40,
-					property: 'end',
-					onStep: function(perc) {
-//						Log.write(perc + '% loaded...');
-					},
-					onComplete: function() {
-//						Log.write('done');
-						fd.animate({
-							modes: ['linear'],
-							transition: $jit.Trans.Elastic.easeOut,
-							duration: 2500
-						});
-					}
-				});
+
 			});
-			graph.fetch({
-				success: function() {
-					l.graph.show(view);
+//			graph.fetch({
+//				success: function() {
+			l.graph.show(view);
+
+			$("#draggable").draggable();
+
+			$('#infovis').droppable({
+				accept: "#draggable"
+						,
+				drop: function(event, ui) {
+
+					var jsonnode = {
+						"id": 'n4',
+						"name": "N4",
+						"data": {
+							"some other key": "some other value"
+						}
+					};
+					fd.graph.addNode(jsonnode);
+					var dataset = {
+						"data": {
+						}};
+//					fd.graph.addAdjacence(fd.graph.getNode
+//							(ui.draggable.attr("id")), fd.graph.getNode("n1"), dataset);
+
+					//compute positions and plot 
+					fd.graph.eachNode(function(node) {
+						var n = node.id.substring(1);
+						node.pos.x = -600 + 300 * n;
+						node.pos.y = 0;
+					});
+					fd.plot();
+					ui.draggable.remove();
 				}
 			});
-		};
 
+			var json = [
+				{
+					"id": "n1",
+					"name": "N1",
+					"data": {
+					},
+					"adjacencies": [
+						{
+							'nodeFrom': 'n1',
+							'nodeTo': 'n2',
+							'data': {
+								'labeltext': 'AA'
+							}
+						}
+					]
+				},
+				{
+					"id": "n2",
+					"name": "N2",
+					"data": {
+					},
+					"adjacencies": [
+						{
+							'nodeFrom': 'n2',
+							'nodeTo': 'n3',
+							'data': {
+								'labeltext': 'AA2'
+							}
+						}
+					]
+				},
+				{
+					"id": "n3",
+					"name": "N3",
+					"data": {
+					},
+					"adjacencies": [
+					]
+				},
+			];
+			$jit.ForceDirected.Plot.EdgeTypes.implement({
+				'label-arrow-line': {
+					'render': function(adj, canvas) {
+						var from = adj.nodeFrom.pos.getc(true),
+								to = adj.nodeTo.pos.getc(true),
+								dim = adj.getData('dim'),
+								direction = adj.data.$direction,
+								inv = (direction && direction.length > 1 && direction[0] != adj.nodeFrom.id);
+						this.edgeHelper.arrow.render(from, to, dim, inv, canvas);
+						var pos = adj.nodeFrom.pos.getc(true);
+						var posChild = adj.nodeTo.pos.getc(true);
+//check for edge label in data
+						var data = adj.data;
+						if (data.labeltext) {
+							//now adjust the label placement
+							var radius = this.viz.canvas.getSize();
+							var x = parseInt((pos.x + posChild.x - (data.labeltext.length * 5)) /
+									2);
+							var y = parseInt((pos.y + posChild.y) / 2);
+							var ctx = canvas.getCtx();
+							var prev = ctx.font;
+							ctx.font = '18px Arial black';
+							ctx.fillStyle = 'black';
+							ctx.fillText(data.labeltext, x, y);
+							ctx.font = prev;
+						}
+					},
+					'contains'
+							: function(adj, pos) {
+						var from = adj.nodeFrom.pos.getc(true),
+								to = adj.nodeTo.pos.getc(true);
+						return this.edgeHelper.arrow.contains(from, to, pos, this.edge.epsilon);
+					}
+				}
+			});
+			var fd = new $jit.ForceDirected({
+//id of the visualization container  
+				injectInto: 'infovis',
+				//Enable zooming and panning  
+				//with scrolling and DnD  
+				Navigation: {
+					enable: true,
+					type: 'Native',
+					//Enable panning events only if we're dragging the empty  
+					//canvas (and not a node).  
+					panning: 'avoid nodes',
+					zooming: 100 //zoom speed. higher is more sensible  
+				},
+				// Change node and edge styles such as  
+				// color and width.  
+				// These properties are also set per node  
+				// with dollar prefixed data-properties in the  
+				// JSON structure.  
+				Node: {
+					overridable: true,
+					type: 'rectangle',
+					width: 100,
+					height: 40
+				},
+				NodeStyles: {
+					enable: true,
+					stylesHover: {
+						dim: 30,
+						color: '#fcc'
+					},
+					duration: 600
+				},
+				Edge: {
+					color: '#23A4FF',
+					lineWidth: 4,
+					dim: 40,
+					type: 'label-arrow-line',
+//						type: 'arrow',
+					overridable: true,
+					direction: ['nodeFrom', 'nodeTo']
+				},
+				// Add node events  
+				Events: {
+					enable: true,
+					type: 'Native',
+					//Change cursor style when hovering a node  
+					onMouseEnter: function() {
+						fd.canvas.getElement().style.cursor = 'move';
+					},
+					onMouseLeave: function() {
+						fd.canvas.getElement().style.cursor = '';
+					},
+					//Update node positions when dragged  
+					onDragMove: function(node, eventInfo, e) {
+						var pos = eventInfo.getPos();
+						node.pos.setc(pos.x, pos.y);
+						fd.plot();
+					},
+					//Implement the same handler for touchscreens  
+					onTouchMove: function(node, eventInfo, e) {
+						$jit.util.event.stop(e); //stop default touchmove event  
+						this.onDragMove(node, eventInfo, e);
+					}
+				},
+				//Number of iterations for the FD algorithm  
+				iterations: 200,
+				//Edge length  
+				levelDistance: 200,
+				// This method is only triggered  
+				// on label creation and only for DOM labels (not native canvas ones).  
+				onCreateLabel: function(domElement, node) {
+// Create a 'name' and 'close' buttons and add them  
+// to the main node label  
+					var nameContainer = document.createElement('span'),
+							closeButton = document.createElement('span'),
+							style = nameContainer.style;
+					nameContainer.className = 'name';
+					nameContainer.innerHTML = node.name;
+					closeButton.className = 'close';
+					closeButton.innerHTML = 'x';
+					domElement.appendChild(nameContainer);
+//						domElement.appendChild(closeButton);
+					style.fontSize = "1.2em";
+					style.color = "#000";
+					//Fade the node and its connections when  
+					//clicking the close button  
+					closeButton.onclick = function() {
+						node.setData('alpha', 0, 'end');
+						node.eachAdjacency(function(adj) {
+							adj.setData('alpha', 0, 'end');
+						});
+						fd.fx.animate({
+							modes: ['node-property:alpha',
+								'edge-property:alpha'],
+							duration: 500
+						});
+					};
+					//Toggle a node selection when clicking  
+					//its name. This is done by animating some  
+					//node styles like its dimension and the color  
+					//and lineWidth of its adjacencies.  
+					nameContainer.onclick = function() {
+//set final styles  
+						fd.graph.eachNode(function(n) {
+							if (n.id != node.id)
+								delete n.selected;
+							n.setData('dim', 7, 'end');
+							n.eachAdjacency(function(adj) {
+								adj.setDataset('end', {
+									lineWidth: 0.4,
+									color: '#23a4ff'
+								});
+							});
+						});
+						if (!node.selected) {
+							node.selected = true;
+							node.setData('dim', 17, 'end');
+							node.eachAdjacency(function(adj) {
+								adj.setDataset('end', {
+									lineWidth: 3,
+									color: '#36acfb'
+								});
+							});
+						} else {
+							delete node.selected;
+						}
+//trigger animation to final styles  
+						fd.fx.animate({
+							modes: ['node-property:dim',
+								'edge-property:lineWidth:color'],
+							duration: 500
+						});
+						// Build the right column relations list.  
+						// This is done by traversing the clicked node connections.  
+						var html = "<h4>" + node.name + "</h4><b> connections:</b><ul><li>",
+								list = [];
+						node.eachAdjacency(function(adj) {
+							if (adj.getData('alpha'))
+								list.push(adj.nodeTo.name);
+						});
+						//append connections information  
+//							$jit.id('inner-details').innerHTML = html + list.join("</li><li>") + "</li></ul>";
+					};
+				},
+				// Change node styles when DOM labels are placed  
+				// or moved.  
+				onPlaceLabel: function(domElement, node) {
+					var style = domElement.style;
+					var left = parseInt(style.left);
+					var top = parseInt(style.top);
+					var w = domElement.offsetWidth;
+					var h = domElement.offsetHeight;
+					style.left = (left - w / 2) + 'px';
+					style.top = (top + 25) + 'px';
+					style.display = '';
+				}
+			});
+// load JSON data.  
+			fd.loadJSON(json);
+// compute positions incrementally and animate.  
+			fd.computeIncremental({
+				iter: 40,
+				property: 'end',
+				onStep: function(perc) {
+//						Log.write(perc + '% loaded...');
+				},
+				onComplete: function() {
+//						Log.write('done');
+					fd.graph.eachNode(function(node) {
+						var n = node.id.substring(1);
+						node.pos.x = -600 + 300 * n;
+						node.pos.y = 0;
+					});
+					fd.plot();
+				}
+			});
+
+
+//				}
+//			});
+		};
 		return CyberNet;
 	}();
-
-
-
 	App.addRegions({
 		content: '#container'
 	});
-
 	App.addInitializer(function() {
 		console.log('init');
 	});
-
 	App.vent.on("routing:started", function() {
 		if (!Backbone.History.started)
 			Backbone.history.start();
 	});
-
-
 	App.start();
-
 });
