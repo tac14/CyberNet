@@ -14,7 +14,8 @@ and open the template in the editor.
 		<script src="./js/backbone.js"></script>
 		<script src="./js/backbone.marionette.js"></script>
 		<script src="./js/backbone.bootstrap-modal.js"></script>
-		<script language="javascript" type="text/javascript" src="./js/jit/jit-yc.js"></script>
+		<script language="javascript" type="text/javascript" src="./js/jit/jit.js"></script>
+		<script language="javascript" type="text/javascript" src="./js/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.js"></script>
 
 		<!-- MODELS -->
 		<script src="./app/models/graph.js"></script>
@@ -35,6 +36,14 @@ and open the template in the editor.
 		<style>
 			body {
 				padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+			}
+
+			#draggable {
+				z-index: 1000;
+				width: 100px;
+				height: 30px; 
+				padding: 0.5em;
+				background-color: yellow; 
 			}
 		</style>
 		<script type="text/javascript" >
@@ -79,7 +88,9 @@ and open the template in the editor.
 			<h1>Game World Graph</h1>
 			<div class=row-fluid>
 				<div class=span4>
-					Controls here
+				<div id="draggable" class="ui-widget-content">
+						<p>Node</p>
+				</div>
 				</div>
 				<div class=span8 id=graph>
 					Graph here
@@ -89,7 +100,7 @@ and open the template in the editor.
 
 
 		<script id="graph-template" type="text/template">
-			<div id="infovis" style="height: 600px; width: 600px; background: #554000;"></div>  
+			<div id="infovis" style="height: 500px; width: 500px; background: #FFF;"></div>  
 		</script>
 	</body>
 </html>
