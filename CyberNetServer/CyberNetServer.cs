@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using MySql.Data.MySqlClient;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 
 namespace CyberNet 
 {
@@ -283,6 +285,42 @@ namespace CyberNet
 				command.Connection.Close();
 			}
 		}
+
+		public void JSONTest()
+		{
+			Node locNode = new Node();
+			locNode.ID = 1;
+			locNode.Name = "1";
+			locNode.NodeType = NodeTypes.Category;
+			Node locNode2 = new Node();
+			locNode2.ID = 2;
+			locNode2.Name = "2";
+			locNode2.NodeType = NodeTypes.OptionsConditionsActionExe;
+
+
+			Edge locEdge = new Edge();
+			locEdge.From = locNode;
+			locEdge.Till = locNode2;
+			locEdge.ID = 1;
+			locEdge.Name = "1";
+
+			Graph locGraph = new Graph();
+			locGraph.Nodes.Add(locNode);
+			locGraph.Nodes.Add(locNode2);
+			locGraph.Edges.Add(locEdge);
+
+			MemoryStream stream1 = new MemoryStream();
+			DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Graph));
+			ser.WriteObject(stream1, locGraph);
+
+			stream1.Position = 0;
+			StreamReader sr = new StreamReader(stream1);
+
+			string locText = sr.ReadToEnd();
+
+
+		}
+
     }
 
     public class TestMain 
@@ -292,6 +330,7 @@ namespace CyberNet
 			MyHttpServer httpServer = new MyHttpServer(8081);
 
 			//httpServer.ConectDB();
+			httpServer.JSONTest();
 			
             Thread thread = new Thread(new ThreadStart(httpServer.listen));
             thread.Start();
