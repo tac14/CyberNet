@@ -6,7 +6,7 @@ using System.Net.Sockets;
 using System.Threading;
 using MySql.Data.MySqlClient;
 
-namespace Bend.Util 
+namespace CyberNet 
 {
 
     public class HttpProcessor 
