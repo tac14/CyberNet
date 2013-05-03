@@ -17,6 +17,10 @@
 </head>
 <body>
 <form runat="server">
+    <asp:ObjectDataSource ID="AgentState1" runat="server"  
+       SelectMethod="GetState" TypeName="WebTest.AgentState">  
+    </asp:ObjectDataSource>  
+
 <div id="outer">
         <div id="header">
 		    <div style="float: left;">
@@ -28,20 +32,18 @@
 			    <table cellpadding="0" cellspacing="0" border="0">
 				    <tr style="vertical-align:middle;" >
 					    <td align="center" style="width: 65px">
-                        <a id="A2" href="~/Account/Login.aspx" runat="server" class="SiteLinkBold">
+                        <a id="A2" href="~/Account/Login.aspx" runat="server" class="SiteLinkBold"> 
                         <img id="Img1" src="~/Styles/Images/sign_in.gif" alt="" runat="server" /><br />
                             <asp:LoginView ID="MenuLoginView" runat="server">
                             <AnonymousTemplate>
-                                Sign In
+                                Вход
                             </AnonymousTemplate>
                             <LoggedInTemplate>
-                                Log Out
+                                Выход
                             </LoggedInTemplate>
                             </asp:LoginView>
                         </a>
                         </td>
-					    <td align="center" style="width: 75"><a id="A4" href="~/Account/OrderList.aspx" runat="server" class="SiteLinkBold"><img id="Img2" src="~/Styles/Images/account.gif" alt="" runat="server" /><br />Account</a></td>
-					    <td align="center" style="width: 65"><a id="A5" href="~/MyShoppingCart.aspx"  runat="server" class="SiteLinkBold"><img id="Img3" src="~/Styles/Images/cart.gif" alt="" runat="server" /><br />Cart</a></td>
                         <td align="center" style="width: 65">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 				    </tr>
 			    </table>
@@ -51,6 +53,7 @@
 			    <a id="A1" href="~/Default.aspx" runat="server" title="">Главная</a>
 			    <a id="A3" href="~/About.aspx" runat="server" title="">О игре</a>
 			    <a id="A6" href="~/JSClient/index.html" runat="server" title="">Играть</a>
+
 	    </div>	
 
     	<div id="content">
@@ -61,12 +64,19 @@
 			    </div>
 		    </div>
        		<div id="leftColumn">
-    			<h3>Test</h3>
+    			<h3>
+                <asp:Repeater ID="RptArt" runat="server"  DataSourceID="AgentState1">   
+                    <ItemTemplate>
+                     <%# Eval("Name")%>
+                    </ItemTemplate>
+                </asp:Repeater>  
 
+                </h3>
     		</div>
             <div class="clear"></div>
    		</div>
-	<div id="footer"><p>Copyright &copy; 2013</p></div>
+	<div id="footer"><p>Copyright &copy; 2013</p>
+        </div>
 </div>
 </form>
 </body>
