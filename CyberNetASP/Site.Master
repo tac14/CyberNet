@@ -30,7 +30,7 @@
 <body>
 <form runat="server">
     <asp:ObjectDataSource ID="AgentState1" runat="server"  
-       SelectMethod="GetState" TypeName="WebTest.AgentState">  
+       SelectMethod="GetState" TypeName="CyberNet.AgentState">  
     </asp:ObjectDataSource>  
 
 <div id="outer">
@@ -104,7 +104,7 @@
                             <td>
                                 <div class="demo" >
                                     <input class="knob" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#66EE66" data-readOnly=true
-                                                        data-width="100" value="10"  />
+                                                        data-width="100" value=<%# Eval("Health")%> readonly="readonly" />
                                 </div>
                             </td>
                         </tr>
@@ -117,7 +117,7 @@
                             <td>
                                 <div class="demo" >
                                     <input class="knob" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#66EE66" data-readOnly=true
-                                                        data-width="100" data-max="1000" value="215"  />
+                                                        data-width="100" data-max="1000" value=<%# Eval("Force")%> readonly="readonly" />
                                 </div>
                             </td>
                         </tr>
@@ -130,7 +130,7 @@
                             <td>
                                 <div class="demo" >
                                     <input class="knob" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#66EE66" data-readOnly=true
-                                                        data-width="100" data-max="1000" value="135"  />
+                                                        data-width="100" data-max="1000" value=<%# Eval("Intelligence")%> readonly="readonly" />
                                 </div>
                             </td>
                         </tr>

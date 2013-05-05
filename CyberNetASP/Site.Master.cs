@@ -5,35 +5,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using CyberNet;
+
 namespace WebTest
 {
-	public class AgentState
-	{
-		public static string SetName = "гость";
-
-		private string name;
-		public string Name
-		{
-			get { return name; }
-		}
-		private string energy;
-		public string Energy
-		{
-			get { return energy; }
-		}
-
-		public static List<AgentState> GetState()
-		{
-			List<AgentState> locList = new List<AgentState>();
-
-			AgentState locAgentState = new AgentState();
-			locAgentState.name = "Привет, " + SetName + "!";
-			locAgentState.energy = "80";
-			locList.Add(locAgentState);
-
-			return locList;
-		}	
-	}
 
 
 	public partial class SiteMaster : System.Web.UI.MasterPage
