@@ -16,6 +16,11 @@ namespace WebTest
 		{
 			get { return name; }
 		}
+		private string energy;
+		public string Energy
+		{
+			get { return energy; }
+		}
 
 		public static List<AgentState> GetState()
 		{
@@ -23,6 +28,7 @@ namespace WebTest
 
 			AgentState locAgentState = new AgentState();
 			locAgentState.name = "Привет, " + SetName + "!";
+			locAgentState.energy = "80";
 			locList.Add(locAgentState);
 
 			return locList;
