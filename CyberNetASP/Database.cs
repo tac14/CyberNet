@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Web;
 using MySql.Data.MySqlClient;
@@ -36,5 +37,34 @@ namespace CyberNet
 				command.Connection.Close();
 			}
 		}
+
+
+		DataTable dt = new DataTable();
+		public DataView GetDataSource(string argCommand)
+		{
+			dt.Columns.Add(new DataColumn("TextField", typeof(String)));
+			dt.Columns.Add(new DataColumn("ValueField", typeof(String)));
+
+			ConectDB(argCommand, DataViewReader);
+
+			DataView dv = new DataView(dt);
+			return dv;
+		
+		}
+		public void DataViewReader(object argReader, EventArgs e)
+		{
+			string locText = ((MySqlDataReader)argReader)["Name"].ToString();
+			string locValue = ((MySqlDataReader)argReader)["ID"].ToString();
+			dt.Rows.Add(CreateRow(locText, locValue, dt));
+		}
+
+		DataRow CreateRow(String Text, String Value, DataTable dt)
+		{
+			DataRow dr = dt.NewRow();
+			dr[0] = Text;
+			dr[1] = Value;
+			return dr;
+		}
+
 	}
 }

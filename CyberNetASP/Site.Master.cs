@@ -21,6 +21,7 @@ namespace WebTest
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			AgentState locAgent = new AgentState(1);
 
 			//if (PreviousPage != null)
 			//{

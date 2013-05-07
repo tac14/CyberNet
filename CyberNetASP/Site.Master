@@ -17,6 +17,10 @@
             {
                 text-align: left;
             }
+            .style2
+            {
+                text-align: right;
+            }
         </style>
     </asp:ContentPlaceHolder>
     <script type="text/javascript" language="javascript" >
@@ -62,11 +66,14 @@
 		    </div>
 	    </div>
 	    <div id="subheader" class="style1">
-			    <a id="A1" href="~/Default.aspx" runat="server" title="">Главная</a>
-			    <a id="A3" href="~/About.aspx" runat="server" title="">О игре</a>
-			    <a id="A6" href="~/JSClient/index.html" runat="server" title="">Играть</a>
-
-
+                <asp:DataList ID="Repeater1" runat="server"  DataSourceID="AgentState1" style="margin-left: auto; margin-right: auto; text-align:center;">   
+                    <ItemTemplate>
+			            <a id="A1" href="~/Default.aspx" runat="server" title="" visible=<%# Eval("NotRun")%> >Главная</a>
+			            <a id="A3" href="~/About.aspx" runat="server" title=""  visible=<%# Eval("NotRun")%> >О игре</a>
+   			            <a id="A4" href="~/Game/Plan.aspx" runat="server" title=""  visible=<%# Eval("Run")%> >Планировщик</a>
+   			            <a id="A6" href="~/JSClient/index.html" runat="server" title=""   visible=<%# Eval("Run")%>>Онтологический граф</a>
+                    </ItemTemplate>
+                </asp:DataList>  
 	    </div>	
 
     	<div id="content">
@@ -78,10 +85,15 @@
 		    </div>
        		<div id="leftColumn">
     			<h3>
-                <asp:Repeater ID="RptArt" runat="server"  DataSourceID="AgentState1">   
+                <asp:DataList ID="RptArt" runat="server"  DataSourceID="AgentState1">   
                     <ItemTemplate>
-                     <%# Eval("Name")%>
+                     
                     <table style="margin-left: auto; margin-right: auto; text-align:center;">
+                        <tr>
+                            <td>
+                               <%# Eval("Name")%>
+                            </td>
+                        </tr>
                         <tr>
                             <td>
                                 Энергия
@@ -136,7 +148,7 @@
                         </tr>
                     </table>
                     </ItemTemplate>
-                </asp:Repeater>  
+                </asp:DataList>  
                 </h3>
 
     		</div>

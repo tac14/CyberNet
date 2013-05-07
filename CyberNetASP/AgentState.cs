@@ -7,12 +7,16 @@ namespace CyberNet
 {
 	public class AgentState
 	{
-
         private static AgentState thisInstance;
 
+		public AgentState(int a)
+		{
+			name = "Привет, " + SetName + "!";
+			thisInstance = this;
+		}
 		public AgentState()
 		{
-			thisInstance = this;
+			int a = 1;
 		}
 		public static AgentState GetInstance()
 		{
@@ -29,8 +33,17 @@ namespace CyberNet
 		public string Name
 		{
 			get { return name; }
-			set { name = value; }
 		}
+		private bool run = false;
+		public bool NotRun
+		{
+			get { return !run; }
+		}
+		public bool Run
+		{
+			get { return run; }
+		}
+
 		private string energy = "100";
 		public string Energy
 		{
@@ -72,6 +85,7 @@ namespace CyberNet
 
 		public void Reader(object argReader, EventArgs e)
 		{
+			run = true;
 			energy = ((MySqlDataReader)argReader)["Energy"].ToString();
 			health = ((MySqlDataReader)argReader)["Health"].ToString();
 			force = ((MySqlDataReader)argReader)["Force"].ToString();
