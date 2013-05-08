@@ -10,7 +10,16 @@
 namespace WebTest.Game {
     
     
-    public partial class Plan {
+    public partial class PlanLayout {
+        
+        /// <summary>
+        /// Plan1 элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource Plan1;
         
         /// <summary>
         /// Product1 элемент управления.
@@ -38,6 +47,15 @@ namespace WebTest.Game {
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList OptionsList;
+        
+        /// <summary>
+        /// Repeater1 элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList Repeater1;
         
         /// <summary>
         /// ToolkitScriptManager1 элемент управления.

@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Домашняя страница" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeBehind="Plan.aspx.cs" Inherits="WebTest.Game.Plan" %>
+    CodeBehind="Plan.aspx.cs" Inherits="WebTest.Game.PlanLayout" %>
 <%@ Register TagPrefix="asp2" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit"%>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
@@ -64,13 +64,20 @@
 
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <asp:ObjectDataSource ID="Product1" runat="server"  
-       SelectMethod="GetProductVariant" UpdateMethod="SaveList" TypeName="CyberNet.Product">  
+    <asp:ObjectDataSource ID="Plan1" runat="server"  
+       SelectMethod="GetPlan" UpdateMethod="SaveList" TypeName="CyberNet.Plan">  
 
         <UpdateParameters> 
             <asp:Parameter Name="ID" Type="Int32" />
-            <asp:Parameter Name="Position" Type="Int32" />
+            <asp:Parameter Name="SeqNumber" Type="Int32" />
+            <asp:Parameter Name="ProductName" Type="String" />
+            <asp:Parameter Name="OptionsID" Type="String" />
         </UpdateParameters>
+    </asp:ObjectDataSource>
+
+    <asp:ObjectDataSource ID="Product1" runat="server"  
+       SelectMethod="GetProductVariant" TypeName="CyberNet.Product">  
+
     </asp:ObjectDataSource>
 
     <p align="left">
@@ -83,11 +90,11 @@
         <asp:DropDownList ID="OptionsList"  runat="server" AutoPostBack="True" OnSelectedIndexChanged="OptionsChange" >
         </asp:DropDownList>
 
-<%--        <asp:DataList ID="Repeater1" runat="server"  DataSourceID="Product1">   
+        <asp:DataList ID="Repeater1" runat="server"  DataSourceID="Product1">   
             <ItemTemplate>
 			    <%# Eval("OperationID")%> - <%# Eval("Name")%> - <%# Eval("ActionName")%>
             </ItemTemplate>
-        </asp:DataList>  --%>
+        </asp:DataList>  
     </p>
 
        <asp2:ToolkitScriptManager ID="ToolkitScriptManager1"   runat="server">
@@ -100,16 +107,16 @@
                    <asp2:ReorderList ID="ReorderList1" runat="server" 
                         CallbackCssStyle="callbackStyle"
                         PostBackOnReorder="false"
-                        DataSourceID="Product1"
+                        DataSourceID="Plan1"
                         DragHandleAlignment="Left" 
                         ItemInsertLocation="Beginning"
                         DataKeyField="ID" 
                         AllowReorder="true"
-                        SortOrderField="Position"
+                        SortOrderField="SeqNumber"
                         >
                           <ItemTemplate>
                             <div class="itemArea">
-                                <strong> <%# Eval("ID")%> - <%# Eval("Position")%> - <%# Eval("Name")%></strong>
+                                <strong> <%# Eval("SeqNumber")%> - <%# Eval("ProductName")%> - <%# Eval("OptionsID")%></strong>
                             </div>
                           </ItemTemplate>
                             <ReorderTemplate>

@@ -263,7 +263,6 @@ blockquote, pre
 
 #content table
 {
-	margin-bottom: 1.5em;
 	border-collapse: collapse;
 	text-align: left;
 }
@@ -271,12 +270,10 @@ blockquote, pre
 #content table th
 {
 	font-weight: bold;
-	padding: 0.5em;
 }
 
 #content table td
 {
-	padding: 0.5em;
 	border-right: solid 1px #fff;
 }
 

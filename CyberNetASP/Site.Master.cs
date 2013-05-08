@@ -15,6 +15,7 @@ namespace WebTest
 	{
 		public void SetUser(string argName)
 		{
+			Plan.AgentName = argName;
 			AgentState.SetName = argName;
 			DataBind();
 		}

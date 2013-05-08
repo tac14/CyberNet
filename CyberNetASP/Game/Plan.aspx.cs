@@ -10,11 +10,12 @@ using CyberNet;
 
 namespace WebTest.Game
 {
-	public partial class Plan : System.Web.UI.Page
+	public partial class PlanLayout : System.Web.UI.Page
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			Product locProduct = new Product(1);
+			Plan locPlan = new Plan(1);
 
 			int OldIndex = ProductList.SelectedIndex;
 			ProductList.DataSource = CreateProductDataSource();
