@@ -60,6 +60,7 @@ namespace CyberNet
 		}
 
 		public static string SetProductID = "гость";
+		public static int SetOptionID = 0;
 
 
 
@@ -69,13 +70,13 @@ namespace CyberNet
 			return GetInstance().GetProductVariantInner();
 		}
 
-		DataTable locList = new DataTable();
+		DataTable locList;
 		public ArrayList VariantList;
 
 
 		private DataTable GetProductVariantInner()
 		{
-
+			locList = new DataTable();
 			locList.Columns.Add(new DataColumn("OperationID", typeof(String)));
 			locList.Columns.Add(new DataColumn("Name", typeof(String)));
 			locList.Columns.Add(new DataColumn("ActionName", typeof(String)));
@@ -83,7 +84,7 @@ namespace CyberNet
 
 			VariantList = new ArrayList();
 			Database locDatabase = new Database();
-			locDatabase.ConectDB("GetGraph (" + SetProductID + ")", Reader);
+			locDatabase.ConectDB("GetGraph (" + SetProductID + ", " + SetOptionID.ToString() + ")", Reader);
 
 
 			return locList;

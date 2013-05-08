@@ -8,6 +8,11 @@ namespace CyberNet
 {
 	public class Database
 	{
+		public void Exec(string argCommand)
+		{
+			ConectDB(argCommand, null);
+		}
+
 		public void ConectDB(string argCommand, EventHandler argReader)
 		{
 			MySqlCommand command = new MySqlCommand(); ;
@@ -22,10 +27,15 @@ namespace CyberNet
 			{
 				command.Connection.Open();
 				reader = command.ExecuteReader();
-				while (reader.Read())
+
+				if (argReader != null)
 				{
-					argReader(reader, null);
+					while (reader.Read())
+					{
+						argReader(reader, null);
+					}
 				}
+
 				reader.Close();
 			}
 			catch (MySqlException ex)
@@ -37,6 +47,8 @@ namespace CyberNet
 				command.Connection.Close();
 			}
 		}
+
+
 
 
 		DataTable dt = new DataTable();

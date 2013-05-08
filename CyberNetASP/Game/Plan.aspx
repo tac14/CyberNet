@@ -70,6 +70,7 @@
         <UpdateParameters> 
             <asp:Parameter Name="ID" Type="Int32" />
             <asp:Parameter Name="SeqNumber" Type="Int32" />
+            <asp:Parameter Name="ProductID" Type="Int32" />
             <asp:Parameter Name="ProductName" Type="String" />
             <asp:Parameter Name="OptionsID" Type="String" />
         </UpdateParameters>
@@ -89,6 +90,7 @@
         Выбирите способ, которым хотите сделать: 
         <asp:DropDownList ID="OptionsList"  runat="server" AutoPostBack="True" OnSelectedIndexChanged="OptionsChange" >
         </asp:DropDownList>
+        <asp:Button id="Button1" Text="Добавить в мой план" OnClick="AddPlan" runat="server"/>
 
         <asp:DataList ID="Repeater1" runat="server"  DataSourceID="Product1">   
             <ItemTemplate>
@@ -106,10 +108,10 @@
                 <div class="reorderListDemo">
                    <asp2:ReorderList ID="ReorderList1" runat="server" 
                         CallbackCssStyle="callbackStyle"
-                        PostBackOnReorder="false"
+                        PostBackOnReorder="true"
                         DataSourceID="Plan1"
                         DragHandleAlignment="Left" 
-                        ItemInsertLocation="Beginning"
+                        ItemInsertLocation="End"
                         DataKeyField="ID" 
                         AllowReorder="true"
                         SortOrderField="SeqNumber"

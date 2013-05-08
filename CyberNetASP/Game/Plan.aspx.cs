@@ -15,7 +15,11 @@ namespace WebTest.Game
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			Product locProduct = new Product(1);
-			Plan locPlan = new Plan(1);
+
+			if (Plan.GetInstance() == null)
+			{
+				Plan locPlan = new Plan(1);
+			}
 
 			int OldIndex = ProductList.SelectedIndex;
 			ProductList.DataSource = CreateProductDataSource();
@@ -24,24 +28,14 @@ namespace WebTest.Game
 
 			ProductList.DataBind();
 
-			//ReorderList1.DataBind();
-			/*
-			int OldIndex2 = OptionsList.SelectedIndex;
-			OptionsList.DataSource = CreateOptionsDataSource();
-			OptionsList.DataTextField = "TextField";
-			OptionsList.DataValueField = "ValueField";
-
-			OptionsList.DataBind();*/
-
 			ProductList.SelectedIndex = OldIndex;
-			//OptionsList.SelectedIndex = OldIndex2;
-
 		}
 		DataView CreateProductDataSource()
 		{
 			Database locDB = new Database();
 			return locDB.GetDataSource("GetAllProduct");
 		}
+
 		DataView CreateOptionsDataSource()
 		{
 			DataTable dt = new DataTable();
@@ -73,24 +67,46 @@ namespace WebTest.Game
 		public void ProductChange(Object sender, EventArgs e)
 		{
 			Product.SetProductID = ProductList.SelectedItem.Value;
-			DataBind();
+
+			// Вначале получим все варианты получения товара, чтобы заполнить OptionsList
+			Product.SetOptionID = 0;
+			Product.GetInstance().GetProductVariant();
 
 			OptionsList.DataSource = CreateOptionsDataSource();
 			OptionsList.DataTextField = "TextField";
 			OptionsList.DataValueField = "ValueField";
-
 			OptionsList.DataBind();
 
-			//OptionsList.SelectedIndex = -1;
+			// Теперь получим, то что относится к первому варианту получения товара (настоящий OptionID, которого не известен)
+			Product.SetOptionID = -1;
 
+			DataBind();
 
 		}
 		public void OptionsChange(Object sender, EventArgs e)
 		{
-			//Product.SetProductID = ProductList.SelectedItem.Value;
-			//DataBind();
+			Product.SetProductID = ProductList.SelectedItem.Value;
+			// Получим, то что относится к выбраному варианту получения товара (настоящий OptionID известен - привязан как Value)
+			Product.SetOptionID = Convert.ToInt32(OptionsList.SelectedItem.Value);
+			DataBind();
 		}
 
+		public void AddPlan(Object sender, EventArgs e)
+		{
+			Database locDB = new Database();
+
+			string locProductID = ProductList.SelectedItem.Value;
+			string locOptionsID = OptionsList.SelectedItem.Value;
+
+			if (locProductID != "" && locOptionsID != "")
+			{
+				locDB.Exec("AddPlan( -1, -1, " + locProductID + ", " + locOptionsID + ", '" + AgentState.SetName + "')");
+				Plan1.DataBind();
+			}
+
+			int a = 1;
+		}
+		
 
 	}
 }
