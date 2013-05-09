@@ -7,7 +7,7 @@
     <title></title>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script type="text/javascript" src="Scripts/jquery.knob.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.knob.js"></script>
 
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
@@ -51,12 +51,12 @@
                         <a id="A2" href="~/Account/Login.aspx" runat="server" class="SiteLinkBold"> 
                         <img id="Img1" src="~/Styles/Images/sign_in.gif" alt="" runat="server" /><br />
                             <asp:LoginView ID="MenuLoginView" runat="server">
-                            <AnonymousTemplate>
-                                Вход
-                            </AnonymousTemplate>
-                            <LoggedInTemplate>
-                                Выход
-                            </LoggedInTemplate>
+                                <AnonymousTemplate>
+                                    Вход
+                                </AnonymousTemplate>
+                                <LoggedInTemplate>
+                                    Выход
+                                </LoggedInTemplate>
                             </asp:LoginView>
                         </a>
                         </td>

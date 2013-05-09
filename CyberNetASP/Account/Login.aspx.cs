@@ -22,6 +22,7 @@ namespace WebTest.Account
 				Master.SetUser("гость");
 				FormsAuthentication.SignOut();
 				Response.Redirect("~/");
+				//Session["UserName"] = LoginUser.UserName;
 			}
 		}
 
