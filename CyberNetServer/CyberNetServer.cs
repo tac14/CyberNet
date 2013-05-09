@@ -286,6 +286,49 @@ namespace CyberNet
 			}
 		}
 
+
+		public void SaveCity(string argName)
+		{
+			MySqlCommand command = new MySqlCommand(); ;
+			string connectionString, commandString;
+			connectionString = "Data source=localhost;UserId=root;Password=nt[yj14;database=CyberNetDB;";
+			MySqlConnection connection = new MySqlConnection(connectionString);
+			commandString = "INSERT Cities (Name) VALUES('"+argName+"');";
+			command.CommandText = commandString;
+			command.Connection = connection;
+			MySqlDataReader reader;
+			try
+			{
+				command.Connection.Open();
+				reader = command.ExecuteReader();
+				reader.Close();
+			}
+			catch (MySqlException ex)
+			{
+				Console.WriteLine("Error: \r\n{0}", ex.ToString());
+			}
+			finally
+			{
+				command.Connection.Close();
+			}
+		}
+
+		public void SaveCities()
+		{
+			string[] locFile1 = File.ReadAllLines("Cities1.txt");
+			string[] locFile2 = File.ReadAllLines("Cities2.txt");
+
+			for (int i = 0; i < locFile1.Length; i++)
+			{
+				SaveCity(locFile1[i]);
+				if (i != locFile1.Length - 1)
+				{
+					SaveCity(locFile2[i]);
+				}
+			}
+
+		}
+		
 		public void JSONTest()
 		{
 			Node locNode = new Node();
@@ -330,8 +373,9 @@ namespace CyberNet
 			MyHttpServer httpServer = new MyHttpServer(8081);
 
 			//httpServer.ConectDB();
-			httpServer.JSONTest();
-			
+			//httpServer.JSONTest();
+			httpServer.SaveCities();
+
             Thread thread = new Thread(new ThreadStart(httpServer.listen));
             thread.Start();
 			
