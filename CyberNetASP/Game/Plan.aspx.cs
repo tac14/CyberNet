@@ -101,12 +101,23 @@ namespace WebTest.Game
 			if (locProductID != "" && locOptionsID != "")
 			{
 				locDB.Exec("AddPlan( -1, -1, " + locProductID + ", " + locOptionsID + ", '" + AgentState.SetName + "')");
-				Plan1.DataBind();
 			}
-
-			int a = 1;
+			DataBind();
 		}
-		
+
+		public void ClearPlan(Object sender, EventArgs e)
+		{
+			for (int i = 0; i < ReorderList1.Items.Count; i++)
+			{
+				CheckBox locCheckBox = ReorderList1.Items[i].FindControl("checkbox1") as CheckBox;
+				if (locCheckBox.Checked == true)
+				{
+					Database locDB = new Database();
+					locDB.Exec("AddPlan( -1, " + (i+1).ToString() + ", NULL, NULL, '" + AgentState.SetName + "')");
+				}
+			}
+			DataBind();
+		}
 
 	}
 }

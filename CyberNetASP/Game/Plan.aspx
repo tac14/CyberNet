@@ -91,6 +91,7 @@
         <asp:DropDownList ID="OptionsList"  runat="server" AutoPostBack="True" OnSelectedIndexChanged="OptionsChange" >
         </asp:DropDownList>
         <asp:Button id="Button1" Text="Добавить в мой план" OnClick="AddPlan" runat="server"/>
+        <asp:Button id="Button2" Text="Очистить выбранные позиции в моем плане" OnClick="ClearPlan" runat="server"/>
 
         <asp:DataList ID="Repeater1" runat="server"  DataSourceID="Product1">   
             <ItemTemplate>
@@ -103,7 +104,10 @@
         </asp2:ToolkitScriptManager>
 
 <%--- <%# Eval("OperationID")%> - <%# Eval("Name")%> --%>
-        <asp:UpdatePanel ID="up1" runat="server">
+        <asp:UpdatePanel ID="up1" runat="server" UpdateMode="Conditional">
+            <Triggers>
+                   <asp:AsyncPostBackTrigger ControlID="Button2" />
+            </Triggers>
             <ContentTemplate>
                 <div class="reorderListDemo">
                    <asp2:ReorderList ID="ReorderList1" runat="server" 
@@ -118,6 +122,7 @@
                         >
                           <ItemTemplate>
                             <div class="itemArea">
+                                <asp:CheckBox id="checkbox1" runat="server"/>
                                 <strong> <%# Eval("SeqNumber")%> - <%# Eval("ProductName")%> - <%# Eval("OptionsID")%></strong>
                             </div>
                           </ItemTemplate>

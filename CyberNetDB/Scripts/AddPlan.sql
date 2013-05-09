@@ -8,9 +8,18 @@ BEGIN
 	IF argID = -1 OR argSeqNumber = -1 THEN
 		set locAgentID = (select a.ID from Agents as a
 							where a.Name = argAgentName);
-		set argSeqNumber = (select max(SeqNumber) from Plans
-							where AgentID=locAgentID and NOT ISNULL(CategoryID)
-							group by NOT ISNULL(CategoryID)) + 1;
+		IF argSeqNumber = -1 THEN
+			IF EXISTS(select max(SeqNumber) from Plans
+								where AgentID=locAgentID and NOT ISNULL(CategoryID)
+								group by NOT ISNULL(CategoryID)) THEN
+
+				set argSeqNumber = (select max(SeqNumber) from Plans
+									where AgentID=locAgentID and NOT ISNULL(CategoryID)
+									group by NOT ISNULL(CategoryID)) + 1;
+			ELSE
+				set argSeqNumber = 1;
+			END IF;
+		END IF;
 		set argID = (select ID from Plans
 						where AgentID = locAgentID and SeqNumber = argSeqNumber);
 	END IF;
