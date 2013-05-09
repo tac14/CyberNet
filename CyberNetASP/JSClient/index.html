@@ -1,6 +1,6 @@
 <!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
+Color #ffcc00
+
 -->
 <!DOCTYPE html>
 <html>
@@ -38,12 +38,27 @@ and open the template in the editor.
 				padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
 			}
 
-			#draggable {
+			.draggable {
 				z-index: 1000;
-				width: 100px;
-				height: 30px; 
-				padding: 0.5em;
-				background-color: yellow; 
+				display: inline-block;
+			}
+
+			.rect {
+				background-image: url("img/rect.png");
+				width: 80px;
+				height: 31px;
+			}
+
+			.romb {
+				background-image: url("img/romb.png");
+				width: 31px;
+				height: 31px;
+			}
+
+			.triangle {
+				background-image: url("img/triangle.png");
+				width: 31px;
+				height: 31px;
 			}
 		</style>
 		<script type="text/javascript" >
@@ -88,8 +103,16 @@ and open the template in the editor.
 			<h1>Game World Graph</h1>
 			<div class=row-fluid>
 				<div class=span4>
-				<div id="draggable" class="ui-widget-content">
-						<p>Node</p>
+					<span>Entity</span> <div id="" class="draggable rect">
+					
+				</div>
+				&nbsp;
+					<span>Romb</span> <div id="" class="draggable romb">
+					
+				</div>
+		&nbsp;
+				<span>Triangle</span> <div id="" class="draggable triangle">
+						
 				</div>
 				</div>
 				<div class=span8 id=graph>

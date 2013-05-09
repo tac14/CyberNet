@@ -37,13 +37,11 @@ $(function() {
 //				success: function() {
 			l.graph.show(view);
 
-			$("#draggable").draggable();
+			$(".draggable").draggable({helper: 'clone'});
 
 			$('#infovis').droppable({
-				accept: "#draggable"
-						,
+				accept: ".draggable",
 				drop: function(event, ui) {
-
 					var jsonnode = {
 						"id": 'n4',
 						"name": "N4",
@@ -59,13 +57,14 @@ $(function() {
 //							(ui.draggable.attr("id")), fd.graph.getNode("n1"), dataset);
 
 					//compute positions and plot 
-					fd.graph.eachNode(function(node) {
-						var n = node.id.substring(1);
-						node.pos.x = -600 + 300 * n;
-						node.pos.y = 0;
-					});
+					var $newPosX = ui.offset.left - $(this).offset().left;
+					var $newPosY = ui.offset.top - $(this).offset().top;
+					var node = fd.graph.getNode("n4");
+					console.log($newPosX-250);
+					console.log($newPosY-250);
+					node.pos.x = $newPosX-250;
+					node.pos.y = $newPosY-250;
 					fd.plot();
-					ui.draggable.remove();
 				}
 			});
 
@@ -74,6 +73,8 @@ $(function() {
 					"id": "n1",
 					"name": "N1",
 					"data": {
+						x: 0,
+						y: 0
 					},
 					"adjacencies": [
 						{
@@ -89,6 +90,8 @@ $(function() {
 					"id": "n2",
 					"name": "N2",
 					"data": {
+						x: 200,
+						y: -200
 					},
 					"adjacencies": [
 						{
@@ -104,10 +107,12 @@ $(function() {
 					"id": "n3",
 					"name": "N3",
 					"data": {
+						x: -200,
+						y: -200
 					},
 					"adjacencies": [
 					]
-				},
+				}
 			];
 			$jit.ForceDirected.Plot.EdgeTypes.implement({
 				'label-arrow-line': {
@@ -314,8 +319,8 @@ $(function() {
 //						Log.write('done');
 					fd.graph.eachNode(function(node) {
 						var n = node.id.substring(1);
-						node.pos.x = -600 + 300 * n;
-						node.pos.y = 0;
+						node.pos.x = node.data.x;
+						node.pos.y = node.data.y;
 					});
 					fd.plot();
 				}
