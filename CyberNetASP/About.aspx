@@ -5,9 +5,12 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
-        О программе
+        О создании игры
     </h2>
     <p>
-        Разместите содержимое здесь.
-    </p>
+        Игра создается и развивается силами открытого коллектива программистов. Поэтому вы сами можете принять участие в создании игры (см. 
+        <a href="https://github.com/tac14/CyberNet,%20пишите%20tac1402@gmail.com">https://github.com/tac14/CyberNet</a>).</p>
+<p align="left">
+        &nbsp;Автор идеи и режисер :) - Яковлев Сергей Сергеевич (<a 
+            href="https://github.com/tac14/CyberNet,%20пишите%20tac1402@gmail.com">tac1402@gmail.com</a>)</p>
 </asp:Content>

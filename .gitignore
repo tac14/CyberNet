@@ -1,2 +1,15 @@
 
 *.suo
+/CyberNetServer/bin/Debug/CyberNetServer.pdb
+/CyberNetServer/obj/x86/Debug/CyberNetServer.exe
+/CyberNetServer/obj/x86/Debug/CyberNetServer.pdb
+/CyberNetServer/obj/x86/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/CyberNetServer/obj/x86/Debug/ResolveAssemblyReference.cache
+/CyberNetServer/bin/Debug/CyberNetServer.vshost.exe.manifest
+/CyberNetServer/obj/x86/Debug/CyberNetServer.csproj.FileListAbsolute.txt
+/CyberNetASP/obj/Debug/CyberNetASP.csproj.FileListAbsolute.txt
+/CyberNetASP/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/CyberNetASP/obj/Debug/WebTest.pdb
+/CyberNetDB/CyberNetDBModel.mwb.bak
+/CyberNetServer/Proxy/nginx-1.3.16/logs/nginx.pid
+/CyberNetASP/obj/Debug/WebTest.dll
