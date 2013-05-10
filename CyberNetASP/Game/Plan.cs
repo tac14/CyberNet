@@ -9,6 +9,7 @@ namespace CyberNet
 {
 	public class Plan
 	{
+		/*
 		private int id;
 		public int ID
 		{
@@ -34,6 +35,18 @@ namespace CyberNet
 			get { return optionsID; }
 			set { optionsID = value; }
 		}
+		private string planDate;
+		public string PlanDate
+		{
+			get { return planDate; }
+			set { planDate = value; }
+		}
+		private string variantNumber;
+		public string VariantNumber
+		{
+			get { return variantNumber; }
+			set { variantNumber = value; }
+		}*/
 
 		private static Plan thisInstance;
 		public static string AgentName = "";
@@ -67,6 +80,8 @@ namespace CyberNet
 			locList.Columns.Add(new DataColumn("ProductID", typeof(int)));
 			locList.Columns.Add(new DataColumn("ProductName", typeof(String)));
 			locList.Columns.Add(new DataColumn("OptionsID", typeof(String)));
+			locList.Columns.Add(new DataColumn("PlanDate", typeof(String)));
+			locList.Columns.Add(new DataColumn("VariantNumber", typeof(String)));
 
 
 			Database locDatabase = new Database();
@@ -83,11 +98,18 @@ namespace CyberNet
 			dr[2] = Convert.ToInt32(((MySqlDataReader)argReader)["ProductID"]);
 			dr[3] = ((MySqlDataReader)argReader)["ProductName"].ToString();
 			dr[4] = ((MySqlDataReader)argReader)["OptionsID"].ToString();
+			dr[5] = ((MySqlDataReader)argReader)["PlanDate"].ToString();
+			string locVariant = ((MySqlDataReader)argReader)["VariantNumber"].ToString();
+			if (locVariant != "")
+			{
+				locVariant += "-й способ";
+			}
+			dr[6] = locVariant;
 
 			locList.Rows.Add(dr);
 		}
 
-		public bool SaveList(int ID, int SeqNumber, int ProductID, string ProductName, string OptionsID)
+		public bool SaveList(int ID, int SeqNumber, int ProductID, string ProductName, string OptionsID, string PlanDate, string VariantNumber)
 		{
 			Database locDB = new Database();
 

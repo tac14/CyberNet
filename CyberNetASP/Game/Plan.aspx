@@ -73,6 +73,8 @@
             <asp:Parameter Name="ProductID" Type="Int32" />
             <asp:Parameter Name="ProductName" Type="String" />
             <asp:Parameter Name="OptionsID" Type="String" />
+            <asp:Parameter Name="PlanDate" Type="String" />
+            <asp:Parameter Name="VariantNumber" Type="String" />
         </UpdateParameters>
     </asp:ObjectDataSource>
 
@@ -122,8 +124,10 @@
                         >
                           <ItemTemplate>
                             <div class="itemArea">
-                                <asp:CheckBox id="checkbox1" runat="server"/>
-                                <strong> <%# Eval("SeqNumber")%> - <%# Eval("ProductName")%> - <%# Eval("OptionsID")%></strong>
+                                <asp:Label runat="server" Width="200"> 
+                                    <asp:CheckBox id="checkbox1" runat="server"/> &nbsp; <%# Eval("SeqNumber")%>. В <strong style="color: DarkSlateBlue;"> <%# Eval("PlanDate")%> </strong> 
+                                </asp:Label>
+                                агент начнёт делать: <span> <strong style="color: DarkSlateBlue;"><%# Eval("ProductName")%> </strong> (<%# Eval("VariantNumber")%>)</span>
                             </div>
                           </ItemTemplate>
                             <ReorderTemplate>
