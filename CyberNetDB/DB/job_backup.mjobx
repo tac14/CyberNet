@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <JobInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pranas="http://www.pranas.net/2012/XMLSchema" pranas:Version="1" JobID="bf6af712-43bd-4049-98e7-41613acc523d" AllNonSystemDb="false" TempFolder="" LogFolder="" DbTimeout="10000" UseWebLog="false">
   <MySqlServer SqlServerType="MySQLTcpIpServer">
-    <SQLExportOptions SQLHeaderComment="" SQLIncludeComments="true" SqlUseTransaction="false" SqlDisableFk="false" SQLCompatibility="NONE" SqlDropDatabase="false" SqlStructure="true" SqlDropTable="false" SqlIfNotExists="true" SqlAutoIncrement="true" SqlBackQuotes="true" SqlProcedureFunction="false" SqlDates="false" SqlData="true" SqlColumns="true" SqlExtended="true" SqlMaxQuerySize="50000" MaxAllowedPacket="1024" SqlDelayed="false" SqlIgnore="false" SqlHexForBlob="true" SqlType="INSERT" NoCreateDatabaseStatement="false" />
+    <SQLExportOptions SQLHeaderComment="" SQLIncludeComments="true" SqlUseTransaction="false" SqlDisableFk="false" SQLCompatibility="NONE" SqlDropDatabase="false" SqlStructure="true" SqlDropTable="true" SqlIfNotExists="true" SqlAutoIncrement="true" SqlBackQuotes="true" SqlProcedureFunction="true" SqlDates="false" SqlData="true" SqlColumns="true" SqlExtended="true" SqlMaxQuerySize="1000000" MaxAllowedPacket="1024" SqlDelayed="false" SqlIgnore="false" SqlHexForBlob="true" SqlType="INSERT" NoCreateDatabaseStatement="false" />
     <PhpMyAdminServerOptions Server="" User="" Password="" />
     <TcpIpServerOptions Server="localhost" Port="3306" User="root" Password="SBFCode:Vr3PNGK7+Jhs3wMX/Axqkg==">
       <SshOptions UseSshTunnel="false" SshServer="" SshPort="22" SshUser="" SshPassword="" />
