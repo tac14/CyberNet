@@ -49,6 +49,17 @@ BEGIN
 					where cp.CategoryID = @locRawID;
 
 					call AddStock(@locAgentID, @locProductID, @dCount, @dQuality);
+				ELSE
+					IF @locActionID = 2 THEN
+						UPDATE Agents
+						SET Cheerfulness = 100
+						WHERE ID = @locAgentID;
+					END IF;
+					IF @locActionID = 3 THEN
+						UPDATE Agents
+						SET Health = Health + (RAND()*7 - 3)
+						WHERE ID = @locAgentID;
+					END IF;
 				END IF;
 
 				ITERATE label1;
@@ -81,20 +92,24 @@ BEGIN
 
 	UPDATE Agents
 	SET Energy = ROUND(Energy - @dEnergy,2),
-		Health = ROUND(Health - @dHealth - IF (Energy < 50, 2.5, 0),2),
-		Agents.Force = ROUND(Agents.Force + @dForce  
-					- IF (Energy < 30, 1.0, 0) - IF (Health < 50, 2.5, 0) ,2),
-		Intelligence = ROUND(Intelligence + @dIntelligence 
-					- IF (Energy < 30, 0.5, 0) - IF (Health < 50, 1.0, 0),2)
+		Health = ROUND(Health - @dHealth - IF (Energy < 50, 2.5, 0) - IF (Cheerfulness = 0, 5, 0),2),
+		Cheerfulness = Cheerfulness - 25,
+		Agents.Force = IF(Cheerfulness <>0, ROUND(Agents.Force + @dForce  
+					- IF (Energy < 30, 1.0, 0) - IF (Health < 50, 2.5, 0) ,2), Agents.Force),
+		Intelligence = IF(Cheerfulness <>0, ROUND(Intelligence + @dIntelligence 
+					- IF (Energy < 30, 0.5, 0) - IF (Health < 50, 1.0, 0),2), Intelligence)
 	WHERE ID = @locAgentID;
 
 	UPDATE Agents
-	SET Energy = IF(Energy<0, 0, Energy),
-		Health = IF(Health<0, 0, Health),
+	SET Energy = IF(Energy<0, 0, IF(Energy>100, 100, Energy)),
+		Health = IF(Health<0, 0, IF(Health>100, 100, Health)),
+		Cheerfulness = IF(Cheerfulness<0, 0, IF(Cheerfulness>100, 100, Cheerfulness)),
 		Agents.Force = IF(Agents.Force<1, 1, Agents.Force),
 		Intelligence = IF(Intelligence<1, 1, Intelligence)
 	WHERE ID = @locAgentID;
 
+	call Eat(@locAgentID);
 
+	call NextTime();
 END$$
 

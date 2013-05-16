@@ -54,6 +54,11 @@ namespace CyberNet
 		{
 			get { return health; }
 		}
+		private string cheerfulness = "100";
+		public string Cheerfulness
+		{
+			get { return cheerfulness; }
+		}
 		private string force = "0";
 		public string Force
 		{
@@ -86,10 +91,11 @@ namespace CyberNet
 		public void Reader(object argReader, EventArgs e)
 		{
 			run = true;
-			energy = ((MySqlDataReader)argReader)["Energy"].ToString();
-			health = ((MySqlDataReader)argReader)["Health"].ToString();
-			force = ((MySqlDataReader)argReader)["Force"].ToString();
-			intelligence = ((MySqlDataReader)argReader)["Intelligence"].ToString();
+			energy = Convert.ToInt32(((MySqlDataReader)argReader)["Energy"]).ToString();
+			health = Convert.ToInt32(((MySqlDataReader)argReader)["Health"]).ToString();
+			cheerfulness = Convert.ToInt32(((MySqlDataReader)argReader)["Cheerfulness"]).ToString();
+			force = Convert.ToInt32(((MySqlDataReader)argReader)["Force"]).ToString();
+			intelligence = Convert.ToInt32(((MySqlDataReader)argReader)["Intelligence"]).ToString();
 		}
 
 	}
