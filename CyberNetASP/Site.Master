@@ -91,7 +91,12 @@
                     <table style="margin-left: auto; margin-right: auto; text-align:center;">
                         <tr>
                             <td>
-                               <%# Eval("Name")%>
+                               <%# Eval("Name")%> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                               <%# Eval("CityName")%> 
                             </td>
                         </tr>
                         <tr>
