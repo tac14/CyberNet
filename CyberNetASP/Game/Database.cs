@@ -17,7 +17,7 @@ namespace CyberNet
 		{
 			MySqlCommand command = new MySqlCommand(); ;
 			string connectionString, commandString;
-			connectionString = "Data source=localhost;UserId=root;Password=nt[yj14;database=CyberNetDB;";
+			connectionString = "Data source=localhost;UserId=root;Password=;database=CyberNetDB;";
 			MySqlConnection connection = new MySqlConnection(connectionString);
 			commandString = "call " + argCommand + ";";
 			command.CommandText = commandString;
