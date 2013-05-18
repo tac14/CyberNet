@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Регистрация" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeBehind="Register.aspx.cs" Inherits="WebTest.Account.Register" %>
+    CodeBehind="Register.aspx.cs" Inherits="CyberNet.Account.Register" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>

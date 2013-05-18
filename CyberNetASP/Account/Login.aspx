@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Выполнить вход" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeBehind="Login.aspx.cs" Inherits="WebTest.Account.Login" %>
+    CodeBehind="Login.aspx.cs" Inherits="CyberNet.Account.Login" %>
 <%@ MasterType VirtualPath="~/Site.master" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">

@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Домашняя страница" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeBehind="Plan.aspx.cs" Inherits="WebTest.Game.PlanLayout" %>
+    CodeBehind="Plan.aspx.cs" Inherits="CyberNet.Game.PlanLayout" %>
 <%@ Register TagPrefix="asp2" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit"%>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">

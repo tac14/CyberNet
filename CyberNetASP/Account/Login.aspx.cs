@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Web.Security;
 using System.IO;
 
-namespace WebTest.Account
+namespace CyberNet.Account
 {
 	public partial class Login : System.Web.UI.Page
 	{

@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 using CyberNet;
 
-namespace WebTest.Game
+namespace CyberNet.Game
 {
 	public partial class PlanLayout : System.Web.UI.Page
 	{

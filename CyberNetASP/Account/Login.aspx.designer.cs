@@ -7,7 +7,8 @@
 // </автоматически создаваемое>
 //------------------------------------------------------------------------------
 
-namespace WebTest.Account {
+namespace CyberNet.Account
+{
     
     
     public partial class Login {
@@ -36,9 +37,10 @@ namespace WebTest.Account {
         /// <remarks>
         /// Автоматически создаваемое свойство.
         /// </remarks>
-        public new WebTest.SiteMaster Master {
+		public new CyberNet.SiteMaster Master
+		{
             get {
-                return ((WebTest.SiteMaster)(base.Master));
+				return ((CyberNet.SiteMaster)(base.Master));
             }
         }
     }

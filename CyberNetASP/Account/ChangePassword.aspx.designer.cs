@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebTest.Account
+namespace CyberNet.Account
 {
 
 

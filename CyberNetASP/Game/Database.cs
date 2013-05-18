@@ -2,6 +2,7 @@
 using System.Data;
 using System.Collections.Generic;
 using System.Web;
+using System.IO;
 using MySql.Data.MySqlClient;
 
 namespace CyberNet
@@ -17,7 +18,9 @@ namespace CyberNet
 		{
 			MySqlCommand command = new MySqlCommand(); ;
 			string connectionString, commandString;
-			connectionString = "Data source=localhost;UserId=root;Password=;database=CyberNetDB;";
+
+			// находится в C:\Program Files (x86)\Common Files\Microsoft Shared\DevServer\11.0\ConnectionString.txt
+			connectionString = File.ReadAllText("ConnectionString.txt");
 			MySqlConnection connection = new MySqlConnection(connectionString);
 			commandString = "call " + argCommand + ";";
 			command.CommandText = commandString;

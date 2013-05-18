@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace WebTest.Account
+namespace CyberNet.Account
 {
 	public partial class ChangePassword : System.Web.UI.Page
 	{

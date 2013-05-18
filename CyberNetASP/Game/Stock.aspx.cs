@@ -5,9 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-using CyberNet;
-
-namespace WebTest.Game
+namespace CyberNet.Game
 {
     public partial class Stock : System.Web.UI.Page
     {

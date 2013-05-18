@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Stock.aspx.cs" Inherits="WebTest.Game.Stock" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Stock.aspx.cs" Inherits="CyberNet.Game.Stock" %>
 
 <!DOCTYPE html>
 

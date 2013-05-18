@@ -5,9 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-using CyberNet;
 
-namespace WebTest
+namespace CyberNet
 {
 
 

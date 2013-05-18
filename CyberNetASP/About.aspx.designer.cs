@@ -7,7 +7,8 @@
 // </автоматически создаваемое>
 //------------------------------------------------------------------------------
 
-namespace WebTest {
+namespace CyberNet
+{
     
     
     public partial class About {

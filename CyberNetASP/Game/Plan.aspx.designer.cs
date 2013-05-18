@@ -7,7 +7,8 @@
 // </автоматически создаваемое>
 //------------------------------------------------------------------------------
 
-namespace WebTest.Game {
+namespace CyberNet.Game
+{
     
     
     public partial class PlanLayout {

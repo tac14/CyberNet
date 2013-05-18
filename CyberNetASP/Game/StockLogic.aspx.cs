@@ -6,10 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 
-using CyberNet;
 using System.Data;
 
-namespace WebTest.Game
+namespace CyberNet.Game
 {
     public partial class StockLogic : System.Web.UI.Page
     {

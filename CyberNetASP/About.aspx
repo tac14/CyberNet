@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="О нас" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeBehind="About.aspx.cs" Inherits="WebTest.About" %>
+    CodeBehind="About.aspx.cs" Inherits="CyberNet.About" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
