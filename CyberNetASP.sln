@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Web
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CyberNetASP", "CyberNetASP\CyberNetASP.csproj", "{C9DB2751-83DD-4D17-AC4A-907B94A2D3D6}"
 EndProject
 Global

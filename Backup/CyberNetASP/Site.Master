@@ -1,0 +1,161 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebTest.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+<%--<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>--%>
+    <title></title>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.knob.js"></script>
+
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+        <style type="text/css">
+
+            .style1
+            {
+                text-align: left;
+            }
+            .style2
+            {
+                text-align: right;
+            }
+        </style>
+    </asp:ContentPlaceHolder>
+    <script type="text/javascript" language="javascript" >
+        $(function ($) {
+            $(".knob").knob({ 
+            });
+        });      
+    </script>
+
+</head>
+<body>
+<form runat="server">
+    <asp:ObjectDataSource ID="AgentState1" runat="server"  
+       SelectMethod="GetState" TypeName="CyberNet.AgentState">  
+    </asp:ObjectDataSource>  
+
+<div id="outer">
+        <div id="header">
+		    <div style="float: left;">
+			    <h1><a href="#">Киберсеть</a></h1>
+			    <h2>Absolutum obsoletum - если что-то работает, то оно уже устарело.</h2>
+		    </div>
+		    <div style="float: right; vertical-align:middle;">
+		    <br /><br />
+			    <table cellpadding="0" cellspacing="0" border="0">
+				    <tr style="vertical-align:middle;" >
+					    <td align="center" style="width: 65px">
+                        <a id="A2" href="~/Account/Login.aspx" runat="server" class="SiteLinkBold"> 
+                        <img id="Img1" src="~/Styles/Images/sign_in.gif" alt="" runat="server" /><br />
+                            <asp:LoginView ID="MenuLoginView" runat="server">
+                                <AnonymousTemplate>
+                                    Вход
+                                </AnonymousTemplate>
+                                <LoggedInTemplate>
+                                    Выход
+                                </LoggedInTemplate>
+                            </asp:LoginView>
+                        </a>
+                        </td>
+                        <td align="center" style="width: 65">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				    </tr>
+			    </table>
+		    </div>
+	    </div>
+	    <div id="subheader" class="style1">
+                <asp:DataList ID="Repeater1" runat="server"  DataSourceID="AgentState1" style="margin-left: auto; margin-right: auto; text-align:center;">   
+                    <ItemTemplate>
+			            <a id="A1" href="~/Default.aspx" runat="server" title="" visible=<%# Eval("NotRun")%> >Главная</a>
+			            <a id="A3" href="~/About.aspx" runat="server" title=""  visible=<%# Eval("NotRun")%> >О игре</a>
+   			            <a id="A4" href="~/Game/Plan.aspx" runat="server" title=""  visible=<%# Eval("Run")%> >Планировщик</a>
+   			            <a id="A6" href="~/JSClient/index.html" runat="server" title=""   visible=<%# Eval("Run")%>>Онтологический граф</a>
+                    </ItemTemplate>
+                </asp:DataList>  
+	    </div>	
+
+    	<div id="content">
+ 		    <div id="rightColumn"></div>
+ 		    <div id="mainContent">
+			    <div id="centerColumn">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+			    </div>
+		    </div>
+       		<div id="leftColumn">
+    			<h3>
+                <asp:DataList ID="RptArt" runat="server"  DataSourceID="AgentState1">   
+                    <ItemTemplate>
+                     
+                    <table style="margin-left: auto; margin-right: auto; text-align:center;">
+                        <tr>
+                            <td>
+                               <%# Eval("Name")%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Энергия
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="demo" >
+                                    <input class="knob" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#66EE66" data-readOnly=true
+                                                        data-width="100" value=<%# Eval("Energy")%> readonly="readonly"  />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Здоровье
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="demo" >
+                                    <input class="knob" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#66EE66" data-readOnly=true
+                                                        data-width="100" value=<%# Eval("Health")%> readonly="readonly" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Физическая сила
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="demo" >
+                                    <input class="knob" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#66EE66" data-readOnly=true
+                                                        data-width="100" data-max="1000" value=<%# Eval("Force")%> readonly="readonly" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Интеллект
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="demo" >
+                                    <input class="knob" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#66EE66" data-readOnly=true
+                                                        data-width="100" data-max="1000" value=<%# Eval("Intelligence")%> readonly="readonly" />
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    </ItemTemplate>
+                </asp:DataList>  
+                </h3>
+
+    		</div>
+            <div class="clear"></div>
+   		</div>
+	<div id="footer"><p>Copyright &copy; 2013 </p></div>
+</div>
+</form>
+</body>
+</html>
