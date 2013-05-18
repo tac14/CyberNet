@@ -96,6 +96,20 @@
                         </tr>
                         <tr>
                             <td>
+                                 <br>
+                                 <asp:Button id="Button1" Text="Следующий ход" OnClick="NextStep" runat="server"/>
+                                 <br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                 <br>
+                                 <asp:Button id="Button2" Text="Начать заново" OnClick="Reset" runat="server"/>
+                                 <br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 Энергия
                             </td>
                         </tr>
@@ -117,6 +131,19 @@
                                 <div class="demo" >
                                     <input class="knob" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#66EE66" data-readOnly=true
                                                         data-width="100" value=<%# Eval("Health")%> readonly="readonly" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Бодрость
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="demo" >
+                                    <input class="knob" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#66EE66" data-readOnly=true
+                                                        data-width="100" value=<%# Eval("Cheerfulness")%> readonly="readonly" />
                                 </div>
                             </td>
                         </tr>

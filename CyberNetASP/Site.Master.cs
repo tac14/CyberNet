@@ -35,5 +35,19 @@ namespace WebTest
 			//    TextBox1.Text = textBox.Text;
 			//}
 		}
+
+		public void NextStep(Object sender, EventArgs e)
+		{
+			Database locDB = new Database();
+			locDB.Exec("CalcStep('" + AgentState.SetName + "')");
+			DataBind();
+		}
+		public void Reset(Object sender, EventArgs e)
+		{
+			Database locDB = new Database();
+			locDB.Exec("Reset('" + AgentState.SetName + "')");
+			DataBind();
+		}
+
 	}
 }
