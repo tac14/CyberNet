@@ -72,7 +72,6 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Game\Plan.aspx" />
     <Content Include="Game\Stock.aspx" />
-    <Content Include="Game\StockLogic.aspx" />
     <Content Include="Scripts\backbone.js" />
     <Content Include="Scripts\handlebars.js" />
     <Content Include="Scripts\jquery.knob.js" />
@@ -153,13 +152,6 @@
     </Compile>
     <Compile Include="Game\Stock.aspx.designer.cs">
       <DependentUpon>Stock.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Game\StockLogic.aspx.cs">
-      <DependentUpon>StockLogic.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Game\StockLogic.aspx.designer.cs">
-      <DependentUpon>StockLogic.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

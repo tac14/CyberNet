@@ -96,7 +96,7 @@ namespace CyberNet
 		public void Reader(object argReader, EventArgs e)
 		{
 			run = true;
-			cityName = ((MySqlDataReader)argReader)["CityName"].ToString();
+			//cityName = ((MySqlDataReader)argReader)["CityName"].ToString();
 			energy = Convert.ToInt32(((MySqlDataReader)argReader)["Energy"]).ToString();
 			health = Convert.ToInt32(((MySqlDataReader)argReader)["Health"]).ToString();
 			cheerfulness = Convert.ToInt32(((MySqlDataReader)argReader)["Cheerfulness"]).ToString();
