@@ -3,8 +3,10 @@ delimiter $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `CalcStep`(argAgentName varchar(45))
 BEGIN
 	DECLARE locAgentID int;
+	DECLARE locAgentCityID int;
 	DECLARE locProductID int;
 	DECLARE locReceivingProductID int;
+	DECLARE locProductReceiveIndex decimal(17,4);
 	DECLARE i int; 
 	DECLARE dEnergy decimal(5,2);
 	DECLARE dHealth decimal(5,2);
@@ -12,15 +14,23 @@ BEGIN
 	DECLARE dIntelligence decimal(10,2);
 	DECLARE locRawID int;
 	DECLARE locActionID int;
-	DECLARE dCount decimal(17,2);
+	DECLARE dCount decimal(17,4);
 	DECLARE dQuality decimal(17,2);
+	DECLARE CountIndex decimal(17,2);
+
 
 	set @locAgentID = (select a.ID from Agents as a
+						where a.Name = argAgentName);
+	set @locAgentCityID = (select a.CityID from Agents as a
 						where a.Name = argAgentName);
 
 	set @locProductID = (select CategoryID
 						from Plans
 						where AgentID = @locAgentID and SeqNumber = 1);
+
+	set @locProductReceiveIndex = (select ReceiveIndex
+						from Categories
+						where ID = @locProductID);
 
 	set @locReceivingProductID = (select OptionsReceivingProductID
 						from Plans
@@ -32,34 +42,60 @@ BEGIN
 			SET @i = @i + 1;
 			IF @i < GetRawCountProductCreate (@locProductID, @locReceivingProductID) + 1 THEN
 
-				call GetRawProductCreate (@locProductID, @locReceivingProductID, @i, @locRawID, @locActionID);
-				/*select @locProductID, @locReceivingProductID, @i, @locRawID, @locActionID;*/
+				call GetRawProductCreate (@locProductID, @locReceivingProductID, @i, 
+											@locRawID, @locActionID, @CountIndex);
+				/*select @locProductID, @locReceivingProductID, @i, @locRawID, 
+							@locActionID, @CountIndex, IsProduct(@locRawID);*/
 				IF IsProduct(@locRawID) = 0 THEN
-					select ROUND( ((cp.Prevalence + ((RAND() * cp.PrevalenceFluctuation * 2) - cp.PrevalenceFluctuation))/100) 
-								* ((ag.Force * (RAND() * a.FMod/2)/100) + (ag.Intelligence * (RAND() * a.IMod/2)/100))
-								* c.CollectIndex * a.TehModifier , 2),
-							ROUND( ((cp.QualityNorm + ((RAND() * cp.QualityFluctuation * 2) - cp.QualityFluctuation))/100) 
-								* ((ag.Force * (RAND() * a.FMod/2)/100) + (ag.Intelligence * (RAND() * a.IMod/2)/100))
-								* a.TehModifier, 2)
-					into @dCount, @dQuality
-					from CategoriesPrevalence as cp
-						join Categories as c on c.ID = cp.CategoryID
-						join Actions as a on a.ID = @locActionID
-						join Agents as ag on ag.ID = @locAgentID
-					where cp.CategoryID = @locRawID;
-
-					call AddStock(@locAgentID, @locProductID, @dCount, @dQuality);
-				ELSE
 					IF @locActionID = 2 THEN
 						UPDATE Agents
-						SET Cheerfulness = 100
+						SET Cheerfulness = 125
 						WHERE ID = @locAgentID;
+					ELSE 
+						IF @locActionID = 3 THEN
+							UPDATE Agents
+							SET Health = Health + (RAND()*7 - 3)
+							WHERE ID = @locAgentID;
+						ELSE
+							IF not exists(select * from CategoriesPrevalence as cp
+											where cp.CategoryID = @locRawID and cp.CityID = @locAgentCityID)  THEN
+							
+								INSERT CategoriesPrevalence (CategoryID, CityID,
+														Prevalence, PrevalenceFluctuation,
+														QualityNorm, QualityFluctuation)
+								VALUES (@locRawID, @locAgentCityID, 
+											ROUND(RAND()*100 ,2), ROUND(RAND()*20 ,2),
+											ROUND(RAND()*100 ,2), ROUND(RAND()*20 ,2));
+							END IF;
+
+
+							select ROUND( ((cp.Prevalence + ((RAND() * cp.PrevalenceFluctuation * 2) - cp.PrevalenceFluctuation))/100) 
+										* ((ag.Force * (RAND() * a.FMod/2)/100) + (ag.Intelligence * (RAND() * a.IMod/2)/100))
+										* @locProductReceiveIndex * a.TehModifier , 4),
+									ROUND( ((cp.QualityNorm + ((RAND() * cp.QualityFluctuation * 2) - cp.QualityFluctuation))/100) 
+										* ((ag.Force * (RAND() * a.FMod/2)/100) + (ag.Intelligence * (RAND() * a.IMod/2)/100))
+										* a.TehModifier, 2)
+							into @dCount, @dQuality
+							from CategoriesPrevalence as cp
+								join Categories as c on c.ID = cp.CategoryID
+								join Actions as a on a.ID = @locActionID
+								join Agents as ag on ag.ID = @locAgentID
+							where cp.CategoryID = @locRawID and cp.CityID = @locAgentCityID;
+
+							call AddStock(@locAgentID, @locProductID, @dCount, @dQuality);
+						END IF;
 					END IF;
-					IF @locActionID = 3 THEN
-						UPDATE Agents
-						SET Health = Health + (RAND()*7 - 3)
-						WHERE ID = @locAgentID;
-					END IF;
+				ELSE
+					/*TODO*/
+					select s.ID, SUM(s.Count), 
+							ROUND(@CountIndex * 
+							CalcProductReceiveIndex(argAgentName, argProductID, argReceivingProductID)  
+							, 2) as RawCount
+					from Stock as s
+							join Categories as c on c.ID = s.CategoryID
+					where CategoryID = @locRawID
+					group by CategoryID;
+
 				END IF;
 
 				ITERATE label1;

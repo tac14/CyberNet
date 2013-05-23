@@ -33,3 +33,9 @@
 /CyberNetASP/bin/zh-CHT/AjaxControlToolkit.resources.dll
 /CyberNetASP/obj/Debug/ResolveAssemblyReference.cache
 .gitconfig
+
+/CyberNetASP/obj/Debug/CyberNet.pdb
+/CyberNetASP/obj/Debug/CyberNet.dll
+/CyberNetASP/bin/CyberNet.pdb
+/CyberNetASP/bin/CyberNet.dll
+/CyberNetASP/bin/ConnectionString.txt

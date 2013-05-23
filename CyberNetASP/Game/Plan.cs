@@ -82,6 +82,7 @@ namespace CyberNet
 			locList.Columns.Add(new DataColumn("OptionsID", typeof(String)));
 			locList.Columns.Add(new DataColumn("PlanDate", typeof(String)));
 			locList.Columns.Add(new DataColumn("VariantNumber", typeof(String)));
+			locList.Columns.Add(new DataColumn("Composition", typeof(String)));
 
 
 			Database locDatabase = new Database();
@@ -105,11 +106,13 @@ namespace CyberNet
 				locVariant += "-й способ";
 			}
 			dr[6] = locVariant;
+			dr[7] = ((MySqlDataReader)argReader)["Composition"];
 
 			locList.Rows.Add(dr);
 		}
 
-		public bool SaveList(int ID, int SeqNumber, int ProductID, string ProductName, string OptionsID, string PlanDate, string VariantNumber)
+		public bool SaveList(int ID, int SeqNumber, int ProductID, string ProductName, string OptionsID, 
+			string PlanDate, string VariantNumber, string Composition)
 		{
 			Database locDB = new Database();
 

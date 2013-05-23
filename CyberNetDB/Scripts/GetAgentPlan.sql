@@ -18,7 +18,7 @@ BEGIN
 		SET i=0;
 		label1: LOOP
 			SET i = i + 1;
-			IF i < 101 THEN
+			IF i < 121 THEN
 				insert Plans (AgentID, SeqNumber)
 				VALUE (locAgentID, i);
 
@@ -29,15 +29,17 @@ BEGIN
 
 	END IF;
 
-	select distinct p.ID, p.SeqNumber, 
-			DATE_ADD(GetCurrentTime(), INTERVAL 12*p.SeqNumber HOUR) as PlanDate,
+	select  p.ID, p.SeqNumber, 
+			DATE_ADD(GetCurrentTime(), INTERVAL 6*p.SeqNumber HOUR) as PlanDate,
 			IFNULL(c.ID, 0) as ProductID,
 			IFNULL(c.Name, '') as ProductName, 
 			IFNULL(o.OptionsID, 0) as OptionsID,
-			GetVariantNumber (IFNULL(c.ID, 0), IFNULL(o.OptionsID, 0)) as VariantNumber
+			GetVariantNumber (IFNULL(c.ID, 0), IFNULL(o.OptionsID, 0)) as VariantNumber,
+			GetComposition(argAgentName, c.ID, o.OptionsID) as Composition
 	from Plans as p
 			left outer join Categories as c on c.ID = p.CategoryID
-			left outer join OptionsReceivingProduct as o on o.OptionsID = p.OptionsReceivingProductID
+			left outer join (select distinct OptionsID from OptionsReceivingProduct) as o 
+					on OptionsID = p.OptionsReceivingProductID
 	where p.AgentID = locAgentID
 	order by p.SeqNumber;
 END$$
