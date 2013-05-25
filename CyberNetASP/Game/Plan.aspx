@@ -85,12 +85,12 @@
     </asp:ObjectDataSource>
 
     <p align="left">
-        Выбирите продукт, который хотите сделать: 
+        Выберите продукт, который хотите сделать: 
         <asp:DropDownList ID="ProductList"  runat="server" AutoPostBack="True" OnSelectedIndexChanged="ProductChange">
         </asp:DropDownList>
     </p>
     <p align="left">
-        Выбирите способ, которым хотите сделать: 
+        Выберите способ, которым хотите сделать: 
         <asp:DropDownList ID="OptionsList"  runat="server" AutoPostBack="True" OnSelectedIndexChanged="OptionsChange" >
         </asp:DropDownList>
         <asp:Button id="Button1" Text="Добавить в мой план" OnClick="AddPlan" runat="server"/>

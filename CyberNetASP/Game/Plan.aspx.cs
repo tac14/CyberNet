@@ -12,6 +12,7 @@ namespace CyberNet.Game
 {
 	public partial class PlanLayout : System.Web.UI.Page
 	{
+
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			Product locProduct = new Product(1);
@@ -81,7 +82,6 @@ namespace CyberNet.Game
 			Product.SetOptionID = -1;
 
 			DataBind();
-
 		}
 		public void OptionsChange(Object sender, EventArgs e)
 		{

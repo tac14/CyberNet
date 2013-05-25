@@ -48,6 +48,7 @@ namespace CyberNet
 			set { variantNumber = value; }
 		}*/
 
+
 		private static Plan thisInstance;
 		public static string AgentName = "";
 

@@ -60,6 +60,8 @@ namespace CyberNet
 			dt.Columns.Add(new DataColumn("TextField", typeof(String)));
 			dt.Columns.Add(new DataColumn("ValueField", typeof(String)));
 
+			dt.Rows.Add(CreateRow("", "-", dt));
+
 			ConectDB(argCommand, DataViewReader);
 
 			DataView dv = new DataView(dt);
