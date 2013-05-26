@@ -70,8 +70,10 @@
                     <ItemTemplate>
 			            <a id="A1" href="~/Default.aspx" runat="server" title="" visible=<%# Eval("NotRun")%> >Главная</a>
 			            <a id="A3" href="~/About.aspx" runat="server" title=""  visible=<%# Eval("NotRun")%> >О игре</a>
-   			            <a id="A4" href="~/Game/Plan.aspx" runat="server" title=""  visible=<%# Eval("Run")%> >Планировщик</a>
-   			            <a id="A6" href="~/JSClient/index.html" runat="server" title=""   visible=<%# Eval("Run")%>>Онтологический граф</a>
+   			            <a id="A4" href="~/Game/Stock.aspx" runat="server" title=""  visible=<%# Eval("Run")%> >Запасы</a>
+   			            <a id="A5" href="~/Game/Plan.aspx" runat="server" title=""  visible=<%# Eval("Run")%> >Планировщик</a>
+   			            <a id="A6" href="~/Game/Market.aspx" runat="server" title=""  visible=<%# Eval("Run")%> >Рынок</a>
+                        <a id="A7" href="~/JSClient/index.html" runat="server" title=""   visible=<%# Eval("Run")%>>Онтологический граф</a>
                     </ItemTemplate>
                 </asp:DataList>  
 	    </div>	

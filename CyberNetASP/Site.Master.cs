@@ -15,6 +15,7 @@ namespace CyberNet
 		public void SetUser(string argName)
 		{
 			Plan.AgentName = argName;
+			Stock.AgentName = argName;
 			AgentState.SetName = argName;
 			DataBind();
 		}

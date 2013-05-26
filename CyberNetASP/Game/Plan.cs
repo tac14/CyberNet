@@ -9,45 +9,6 @@ namespace CyberNet
 {
 	public class Plan
 	{
-		/*
-		private int id;
-		public int ID
-		{
-			get { return id; }
-			set { id = value; }
-		}
-		private int seqNumber;
-		public int SeqNumber
-		{
-			get { return seqNumber; }
-			set { seqNumber = value; }
-		}
-
-		private string productName;
-		public string ProductName
-		{
-			get { return productName; }
-			set { productName = value; }
-		}
-		private string optionsID;
-		public string OptionsID
-		{
-			get { return optionsID; }
-			set { optionsID = value; }
-		}
-		private string planDate;
-		public string PlanDate
-		{
-			get { return planDate; }
-			set { planDate = value; }
-		}
-		private string variantNumber;
-		public string VariantNumber
-		{
-			get { return variantNumber; }
-			set { variantNumber = value; }
-		}*/
-
 
 		private static Plan thisInstance;
 		public static string AgentName = "";

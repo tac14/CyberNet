@@ -64,12 +64,12 @@ namespace CyberNet
 		{
 			get { return cheerfulness; }
 		}
-		private string force = "0";
+		private string force = "1";
 		public string Force
 		{
 			get { return force; }
 		}
-		private string intelligence = "0";
+		private string intelligence = "1";
 		public string Intelligence
 		{
 			get { return intelligence; }
