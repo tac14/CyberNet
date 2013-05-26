@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Web;
 using MySql.Data.MySqlClient;
@@ -7,32 +8,68 @@ namespace CyberNet
 {
 	public class AgentState
 	{
-        private static AgentState thisInstance;
+        private static AgentState CurrentInstance;
 
-		public AgentState(int a)
+		private static ArrayList AllAgent = new ArrayList();
+
+		public AgentState(string argUserName)
 		{
-			name = "Привет, " + SetName + "!";
-			thisInstance = this;
+			int Found = -1;
+			for (int i = 0; i < AllAgent.Count; i++)
+			{
+				AgentState locAgentState = AllAgent[i] as AgentState;
+				if (locAgentState.Name == argUserName)
+				{
+					Found = i;
+					break;
+				}
+			}
+			if (Found == -1)
+			{
+				AllAgent.Add(this);
+				CurrentInstance = this;
+			}
+			else
+			{
+				CurrentInstance = AllAgent[Found] as AgentState;
+			}
+
 		}
 		public AgentState()
 		{
 			int a = 1;
 		}
-		public static AgentState GetInstance()
+		public static AgentState GetInstance(string argUserName)
 		{
-			return thisInstance;
+			int Found = -1;
+			for (int i = 0; i < AllAgent.Count; i++)
+			{
+				AgentState locAgentState = AllAgent[i] as AgentState;
+				if (locAgentState.Name == argUserName)
+				{
+					Found = i;
+					break;
+				}
+			}
+			if (Found != -1)
+			{
+				CurrentInstance = AllAgent[Found] as AgentState;
+			}
+			Plan.AgentName = CurrentInstance.Name;
+			Stock.AgentName = CurrentInstance.Name;
+
+			return CurrentInstance;
 		}
 		public List<AgentState> GetState()
 		{
-			return GetInstance().GetStateInner();
+			return CurrentInstance.GetStateInner();
 		}
 
-		public static string SetName = "гость";
-
-		private string name;
+		private string name = "гость";
 		public string Name
 		{
 			get { return name; }
+			set { name = value; }
 		}
 		private string cityName;
 		public string CityName
@@ -42,11 +79,11 @@ namespace CyberNet
 		private bool run = false;
 		public bool NotRun
 		{
-			get { return !run; }
+			get { return !CurrentInstance.run; }
 		}
 		public bool Run
 		{
-			get { return run; }
+			get { return CurrentInstance.run; }
 		}
 
 		private string energy = "100";
@@ -80,12 +117,12 @@ namespace CyberNet
 			List<AgentState> locList = new List<AgentState>();
 
 			AgentState locAgentState = new AgentState();
-			locAgentState.name = "Привет, " + SetName + "!";
+			locAgentState.name = "Привет, " + Name + "!";
 
-			if (SetName != "гость")
+			if (Name != "гость")
 			{
 				Database locDatabase = new Database();
-				locDatabase.ConectDB("GetAgentState ('" + SetName + "')", Reader);
+				locDatabase.ConectDB("GetAgentState ('" + Name + "')", Reader);
 			}
 
 			locList.Add(this);
@@ -95,13 +132,13 @@ namespace CyberNet
 
 		public void Reader(object argReader, EventArgs e)
 		{
-			run = true;
-			cityName = ((MySqlDataReader)argReader)["CityName"].ToString();
-			energy = Convert.ToInt32(((MySqlDataReader)argReader)["Energy"]).ToString();
-			health = Convert.ToInt32(((MySqlDataReader)argReader)["Health"]).ToString();
-			cheerfulness = Convert.ToInt32(((MySqlDataReader)argReader)["Cheerfulness"]).ToString();
-			force = Convert.ToInt32(((MySqlDataReader)argReader)["Force"]).ToString();
-			intelligence = Convert.ToInt32(((MySqlDataReader)argReader)["Intelligence"]).ToString();
+			CurrentInstance.run = true;
+			CurrentInstance.cityName = ((MySqlDataReader)argReader)["CityName"].ToString();
+			CurrentInstance.energy = Convert.ToInt32(((MySqlDataReader)argReader)["Energy"]).ToString();
+			CurrentInstance.health = Convert.ToInt32(((MySqlDataReader)argReader)["Health"]).ToString();
+			CurrentInstance.cheerfulness = Convert.ToInt32(((MySqlDataReader)argReader)["Cheerfulness"]).ToString();
+			CurrentInstance.force = Convert.ToInt32(((MySqlDataReader)argReader)["Force"]).ToString();
+			CurrentInstance.intelligence = Convert.ToInt32(((MySqlDataReader)argReader)["Intelligence"]).ToString();
 		}
 
 	}

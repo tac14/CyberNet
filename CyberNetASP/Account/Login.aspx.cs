@@ -17,13 +17,13 @@ namespace CyberNet.Account
 
 
 			// Пользователь выполнил вход, поэтому необходимо выполнить выход.
-			if (User.Identity.IsAuthenticated)
+			/*if (User.Identity.IsAuthenticated)
 			{
 				Master.SetUser("гость");
+				Session["UserName"] = "гость";
 				FormsAuthentication.SignOut();
 				Response.Redirect("~/");
-				//Session["UserName"] = LoginUser.UserName;
-			}
+			}*/
 		}
 
 		protected void LoginUser_LoggedIn(object sender, EventArgs e)
@@ -31,7 +31,6 @@ namespace CyberNet.Account
 			Session["UserName"] = LoginUser.UserName;
 
 			Master.SetUser(LoginUser.UserName);
-
 
 		}
 	}

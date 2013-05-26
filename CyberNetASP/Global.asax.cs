@@ -31,7 +31,15 @@ namespace CyberNet
 		void Session_Start(object sender, EventArgs e)
 		{
 			// Код, выполняемый при запуске нового сеанса
-
+			if (Session["UserName"] == null)
+			{
+				Session["UserName"] = "гость";
+				AgentState locAgent = new AgentState((string)Session["UserName"]);
+			}
+			else
+			{
+				AgentState locAgent = new AgentState((string)Session["UserName"]);
+			}
 		}
 
 		void Session_End(object sender, EventArgs e)

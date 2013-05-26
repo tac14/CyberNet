@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Security;
 
 
 namespace CyberNet
@@ -14,18 +15,14 @@ namespace CyberNet
 	{
 		public void SetUser(string argName)
 		{
-			Plan.AgentName = argName;
-			Stock.AgentName = argName;
-			AgentState.SetName = argName;
+			AgentState locAgent = new AgentState(argName);
+			AgentState.GetInstance(argName).Name = argName;
 			DataBind();
 		}
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			//if (AgentState.GetInstance() == null)
-			{
-				AgentState locAgent = new AgentState(1);
-			}
+			AgentState.GetInstance((string)Session["UserName"]);
 
 			//if (PreviousPage != null)
 			//{
@@ -39,15 +36,29 @@ namespace CyberNet
 		public void NextStep(Object sender, EventArgs e)
 		{
 			Database locDB = new Database();
-			locDB.Exec("CalcStep('" + AgentState.SetName + "')");
+			locDB.Exec("CalcStep('" + AgentState.GetInstance((string)Session["UserName"]).Name + "')");
 			DataBind();
 		}
 		public void Reset(Object sender, EventArgs e)
 		{
 			Database locDB = new Database();
-			locDB.Exec("Reset('" + AgentState.SetName + "')");
+			locDB.Exec("Reset('" + AgentState.GetInstance((string)Session["UserName"]).Name + "')");
 			DataBind();
 		}
+		public void LoggedIn(Object sender, EventArgs e)
+		{
+			Response.Redirect("~/Account/Login.aspx");
+		}
+		public void LoggedOut(Object sender, EventArgs e)
+		{
+			// Пользователь выполнил вход, поэтому необходимо выполнить выход.
+				SetUser("гость");
+				Session["UserName"] = "гость";
+				FormsAuthentication.SignOut();
+				Response.Redirect("~/");
+		}
+
+
 
 	}
 }

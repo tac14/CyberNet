@@ -100,7 +100,7 @@ namespace CyberNet.Game
 
 			if (locProductID != "" && locOptionsID != "")
 			{
-				locDB.Exec("AddPlan( -1, -1, " + locProductID + ", " + locOptionsID + ", '" + AgentState.SetName + "')");
+				locDB.Exec("AddPlan( -1, -1, " + locProductID + ", " + locOptionsID + ", '" + AgentState.GetInstance((string)Session["UserName"]).Name + "')");
 			}
 			DataBind();
 		}
@@ -113,7 +113,7 @@ namespace CyberNet.Game
 				if (locCheckBox.Checked == true)
 				{
 					Database locDB = new Database();
-					locDB.Exec("AddPlan( -1, " + (i+1).ToString() + ", NULL, NULL, '" + AgentState.SetName + "')");
+					locDB.Exec("AddPlan( -1, " + (i + 1).ToString() + ", NULL, NULL, '" + AgentState.GetInstance((string)Session["UserName"]).Name + "')");
 				}
 			}
 			DataBind();

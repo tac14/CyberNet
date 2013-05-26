@@ -55,7 +55,8 @@
                                     Вход
                                 </AnonymousTemplate>
                                 <LoggedInTemplate>
-                                    Выход
+                                    <%= Context.User.Identity.Name %>
+                                    <asp:Button id="Button4" Text="Выход" OnClick="LoggedOut" runat="server"/>
                                 </LoggedInTemplate>
                             </asp:LoginView>
                         </a>
@@ -89,98 +90,92 @@
     			<h3>
                 <asp:DataList ID="RptArt" runat="server"  DataSourceID="AgentState1">   
                     <ItemTemplate>
-                     
-                    <table style="margin-left: auto; margin-right: auto; text-align:center;">
-                        <tr>
-                            <td>
-                               <%# Eval("Name")%> 
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                               <%# Eval("CityName")%> 
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                 <br>
-                                 <asp:Button id="Button1" Text="Следующий ход" OnClick="NextStep" runat="server"/>
-                                 <br>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                 <br>
-                                 <asp:Button id="Button2" Text="Начать заново" OnClick="Reset" runat="server"/>
-                                 <br>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Энергия
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="demo" >
-                                    <input class="knob" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#66EE66" data-readOnly=true
-                                                        data-width="100" value=<%# Eval("Energy")%> readonly="readonly"  />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Здоровье
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="demo" >
-                                    <input class="knob" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#66EE66" data-readOnly=true
-                                                        data-width="100" value=<%# Eval("Health")%> readonly="readonly" />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Бодрость
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="demo" >
-                                    <input class="knob" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#66EE66" data-readOnly=true
-                                                        data-width="100" value=<%# Eval("Cheerfulness")%> readonly="readonly" />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Физическая сила
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="demo" >
-                                    <input class="knob" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#66EE66" data-readOnly=true
-                                                        data-width="100" data-max="1000" value=<%# Eval("Force")%> readonly="readonly" />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Интеллект
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="demo" >
-                                    <input class="knob" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#66EE66" data-readOnly=true
-                                                        data-width="100" data-max="1000" value=<%# Eval("Intelligence")%> readonly="readonly" />
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
+                        <table runat="server" style="margin-left: auto; margin-right: auto; text-align:center;" visible=<%# Eval("Run")%>>
+                            <tr>
+                                <td>
+                                   <%# Eval("CityName")%> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                     <br>
+                                     <asp:Button id="Button1" Text="Следующий ход" OnClick="NextStep" runat="server"/>
+                                     <br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                     <br>
+                                     <asp:Button id="Button2" Text="Начать заново" OnClick="Reset" runat="server"/>
+                                     <br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Энергия
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="demo" >
+                                        <input class="knob" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#66EE66" data-readOnly=true
+                                                            data-width="100" value=<%# Eval("Energy")%> readonly="readonly"  />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Здоровье
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="demo" >
+                                        <input class="knob" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#66EE66" data-readOnly=true
+                                                            data-width="100" value=<%# Eval("Health")%> readonly="readonly" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Бодрость
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="demo" >
+                                        <input class="knob" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#66EE66" data-readOnly=true
+                                                            data-width="100" value=<%# Eval("Cheerfulness")%> readonly="readonly" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Физическая сила
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="demo" >
+                                        <input class="knob" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#66EE66" data-readOnly=true
+                                                            data-width="100" data-max="1000" value=<%# Eval("Force")%> readonly="readonly" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Интеллект
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="demo" >
+                                        <input class="knob" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#66EE66" data-readOnly=true
+                                                            data-width="100" data-max="1000" value=<%# Eval("Intelligence")%> readonly="readonly" />
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
                     </ItemTemplate>
                 </asp:DataList>  
                 </h3>

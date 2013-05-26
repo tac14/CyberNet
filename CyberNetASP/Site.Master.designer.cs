@@ -7,8 +7,7 @@
 // </автоматически создаваемое>
 //------------------------------------------------------------------------------
 
-namespace CyberNet
-{
+namespace CyberNet {
     
     
     public partial class SiteMaster {
