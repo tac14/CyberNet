@@ -55,6 +55,12 @@ namespace CyberNet
 			{
 				CurrentInstance = AllAgent[Found] as AgentState;
 			}
+			else
+			{
+				CurrentInstance = new AgentState(argUserName);
+				//AllAgent.Add(CurrentInstance);
+			}
+
 			Plan.AgentName = CurrentInstance.Name;
 			Stock.AgentName = CurrentInstance.Name;
 

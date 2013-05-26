@@ -22,7 +22,19 @@ namespace CyberNet
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			AgentState.GetInstance((string)Session["UserName"]);
+			if (Context.User.Identity.Name != "")
+			{
+				Session["UserName"] = Context.User.Identity.Name;
+
+				AgentState locState = AgentState.GetInstance((string)Session["UserName"]);
+				
+				// Это случай когда регистрация уже произошла
+				if (locState.Name != Context.User.Identity.Name)
+				{
+					locState.Name = Context.User.Identity.Name;
+					DataBind();
+				}
+			}
 
 			//if (PreviousPage != null)
 			//{

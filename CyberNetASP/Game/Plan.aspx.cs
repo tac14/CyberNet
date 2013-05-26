@@ -93,16 +93,18 @@ namespace CyberNet.Game
 
 		public void AddPlan(Object sender, EventArgs e)
 		{
-			Database locDB = new Database();
-
-			string locProductID = ProductList.SelectedItem.Value;
-			string locOptionsID = OptionsList.SelectedItem.Value;
-
-			if (locProductID != "" && locOptionsID != "")
+			if (ProductList.SelectedItem != null && OptionsList.SelectedItem != null)
 			{
-				locDB.Exec("AddPlan( -1, -1, " + locProductID + ", " + locOptionsID + ", '" + AgentState.GetInstance((string)Session["UserName"]).Name + "')");
+				string locProductID = ProductList.SelectedItem.Value;
+				string locOptionsID = OptionsList.SelectedItem.Value;
+
+				if (locProductID != "" && locOptionsID != "")
+				{
+					Database locDB = new Database();
+					locDB.Exec("AddPlan( -1, -1, " + locProductID + ", " + locOptionsID + ", '" + AgentState.GetInstance((string)Session["UserName"]).Name + "')");
+				}
+				DataBind();
 			}
-			DataBind();
 		}
 
 		public void ClearPlan(Object sender, EventArgs e)
