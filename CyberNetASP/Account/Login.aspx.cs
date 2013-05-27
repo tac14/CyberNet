@@ -28,10 +28,11 @@ namespace CyberNet.Account
 
 		protected void LoginUser_LoggedIn(object sender, EventArgs e)
 		{
-			Session["UserName"] = LoginUser.UserName;
-
-			Master.SetUser(LoginUser.UserName);
-
+			if (User.Identity.IsAuthenticated)
+			{
+				Session["UserName"] = LoginUser.UserName;
+				Master.SetUser(LoginUser.UserName);
+			}
 		}
 	}
 }

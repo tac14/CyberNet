@@ -30,6 +30,9 @@ namespace CyberNet.Game
 			ProductList.DataBind();
 
 			ProductList.SelectedIndex = OldIndex;
+
+			Product.SetProductID = "0";
+			Product.SetOptionID = 0;
 		}
 		DataView CreateProductDataSource()
 		{

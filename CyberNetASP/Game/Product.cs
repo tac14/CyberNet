@@ -59,7 +59,7 @@ namespace CyberNet
 			return thisInstance;
 		}
 
-		public static string SetProductID = "гость";
+		public static string SetProductID = "0";
 		public static int SetOptionID = 0;
 
 
