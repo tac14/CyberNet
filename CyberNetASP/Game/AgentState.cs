@@ -63,6 +63,7 @@ namespace CyberNet
 
 			Plan.AgentName = CurrentInstance.Name;
 			Stock.AgentName = CurrentInstance.Name;
+			Market.AgentName = CurrentInstance.Name;
 
 			return CurrentInstance;
 		}

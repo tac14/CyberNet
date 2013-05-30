@@ -146,6 +146,7 @@
     <Compile Include="Game\Market.aspx.designer.cs">
       <DependentUpon>Market.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Game\Market.cs" />
     <Compile Include="Game\Plan.aspx.cs">
       <DependentUpon>Plan.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

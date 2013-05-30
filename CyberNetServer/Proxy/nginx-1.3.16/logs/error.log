@@ -51,3 +51,5 @@
 2013/04/22 20:44:25 [error] 5716#2848: *75 WSARecv() failed (10054: An existing connection was forcibly closed by the remote host) while reading upstream, client: 188.112.188.102, server: cybernet2.no-ip.biz, request: "GET /server/graph/2 HTTP/1.1", upstream: "http://127.0.0.1:8081/server/graph/2", host: "cybernet2.no-ip.biz"
 2013/04/22 21:26:07 [notice] 5020#2288: signal process started
 2013/04/23 15:22:39 [notice] 5916#3700: signal process started
+2013/05/26 16:09:08 [notice] 876#5068: signal process started
+2013/05/26 18:20:06 [notice] 5940#2936: signal process started
