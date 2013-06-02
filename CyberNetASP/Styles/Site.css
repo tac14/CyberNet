@@ -274,7 +274,7 @@ blockquote, pre
 
 #content table td
 {
-	border-right: solid 1px #fff;
+	/*border-right: solid 1px #fff;*/
 }
 
 #content table tr.rowH
@@ -374,6 +374,25 @@ text-decoration: none;
 .clear
 {
 	clear: both;
+}
+
+/* Стиль для таблицы с запасами агента*/
+#stocktable 
+{
+    border-color: grey;
+    margin:0 auto;
+}
+
+#stocktable th, #stocktable td
+{
+    padding: 1px 5px;
+    border-style: solid !important;
+    border-width: 1px !important;
+}
+
+#stocktable tr.alt
+{
+    background-color:#F5FAFA;
 }
 
 /* ================================

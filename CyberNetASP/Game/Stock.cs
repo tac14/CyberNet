@@ -9,31 +9,18 @@ namespace CyberNet
 {
 	public class Stock
 	{
-		private static Stock thisInstance;
-		public static string AgentName = "";
-
-		public Stock(int a)
-		{
-			thisInstance = this;
-		}
 		public Stock()
 		{
-			int a = 1;
-		}
-		public static Stock GetInstance()
-		{
-			return thisInstance;
 		}
 
-
-		public DataTable GetStock()
+        public DataTable GetStock(string agentName)
 		{
-			return GetInstance().GetStockInner();
+            return GetStockInner(agentName);
 		}
 
 		DataTable locList;
 
-		private DataTable GetStockInner()
+        private DataTable GetStockInner(string agentName)
 		{
 			
 			locList = new DataTable();
@@ -45,7 +32,7 @@ namespace CyberNet
 
 
 			Database locDatabase = new Database();
-			locDatabase.ConectDB("GetStock ('" + AgentName + "')", Reader);
+			locDatabase.ConectDB("GetStock ('" + agentName + "')", Reader);
 
 			return locList;
 		}
