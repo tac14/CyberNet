@@ -70,6 +70,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Game\AllMarket.aspx" />
     <Content Include="Game\Market.aspx" />
     <Content Include="Game\Plan.aspx" />
     <Content Include="Game\Stock.aspx" />
@@ -131,6 +132,13 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Game\AgentState.cs" />
+    <Compile Include="Game\AllMarket.aspx.cs">
+      <DependentUpon>AllMarket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Game\AllMarket.aspx.designer.cs">
+      <DependentUpon>AllMarket.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Game\Database.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
