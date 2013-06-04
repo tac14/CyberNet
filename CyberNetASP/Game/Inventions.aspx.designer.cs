@@ -13,6 +13,24 @@ namespace CyberNet.Game {
     public partial class Inventions {
         
         /// <summary>
+        /// NewAction элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable NewAction;
+        
+        /// <summary>
+        /// Error1 элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Error1;
+        
+        /// <summary>
         /// ActionName элемент управления.
         /// </summary>
         /// <remarks>
@@ -40,6 +58,24 @@ namespace CyberNet.Game {
         protected global::System.Web.UI.WebControls.Button AddAction1;
         
         /// <summary>
+        /// NewRaw элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable NewRaw;
+        
+        /// <summary>
+        /// Error2 элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Error2;
+        
+        /// <summary>
         /// RawName элемент управления.
         /// </summary>
         /// <remarks>
@@ -47,6 +83,15 @@ namespace CyberNet.Game {
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox RawName;
+        
+        /// <summary>
+        /// RawMeasure элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox RawMeasure;
         
         /// <summary>
         /// CategoryType элемент управления.
@@ -58,6 +103,15 @@ namespace CyberNet.Game {
         protected global::System.Web.UI.WebControls.DropDownList CategoryType;
         
         /// <summary>
+        /// RawNorm элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox RawNorm;
+        
+        /// <summary>
         /// AddRaw1 элемент управления.
         /// </summary>
         /// <remarks>
@@ -65,6 +119,24 @@ namespace CyberNet.Game {
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button AddRaw1;
+        
+        /// <summary>
+        /// NewProduct элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable NewProduct;
+        
+        /// <summary>
+        /// Error3 элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Error3;
         
         /// <summary>
         /// ProductName элемент управления.
@@ -76,13 +148,13 @@ namespace CyberNet.Game {
         protected global::System.Web.UI.WebControls.TextBox ProductName;
         
         /// <summary>
-        /// ProductMeasurement элемент управления.
+        /// ProductMeasure элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ProductMeasurement;
+        protected global::System.Web.UI.WebControls.TextBox ProductMeasure;
         
         /// <summary>
         /// IsFood элемент управления.
@@ -92,6 +164,15 @@ namespace CyberNet.Game {
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox IsFood;
+        
+        /// <summary>
+        /// ProductNorm элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ProductNorm;
         
         /// <summary>
         /// AddProduct1 элемент управления.
@@ -112,13 +193,13 @@ namespace CyberNet.Game {
         protected global::System.Web.UI.WebControls.DropDownList ProductList;
         
         /// <summary>
-        /// DropDownList3 элемент управления.
+        /// ProductList2 элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
+        protected global::System.Web.UI.WebControls.DropDownList ProductList2;
         
         /// <summary>
         /// TextBox2 элемент управления.
@@ -175,13 +256,13 @@ namespace CyberNet.Game {
         protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
         
         /// <summary>
-        /// DropDownList2 элемент управления.
+        /// ProductList3 элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.WebControls.DropDownList ProductList3;
         
         /// <summary>
         /// TextBox5 элемент управления.
