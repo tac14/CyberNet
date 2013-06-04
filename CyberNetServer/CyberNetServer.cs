@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
@@ -364,6 +365,32 @@ namespace CyberNet
 
 		}
 
+		public void NextTime()
+		{
+			while (1 == 1)
+			{
+				Stopwatch stopWatch = new Stopwatch();
+				Stopwatch stopWatch2 = new Stopwatch();
+				stopWatch.Start();
+				stopWatch2.Start();
+
+				Console.WriteLine("NextTime {0}", DateTime.Now.Date.ToShortDateString() + " " + DateTime.Now.TimeOfDay.ToString());
+
+				stopWatch.Stop();
+
+				TimeSpan ts = stopWatch.Elapsed;
+
+				int time = 60000 - (int)ts.TotalMilliseconds; // 60000 - 1 минута
+				if (time > 0)
+				{
+					Thread.Sleep(time); // 1 час
+				}
+				stopWatch2.Stop();
+
+			}
+		}
+
+
     }
 
     public class TestMain 
@@ -374,11 +401,13 @@ namespace CyberNet
 
 			//httpServer.ConectDB();
 			//httpServer.JSONTest();
-			httpServer.SaveCities();
+			//httpServer.SaveCities();
 
             Thread thread = new Thread(new ThreadStart(httpServer.listen));
             thread.Start();
-			
+
+			Thread locTimeThread = new Thread(new ThreadStart(httpServer.NextTime));
+			locTimeThread.Start();
 
             return 0;
         }

@@ -74,7 +74,7 @@
    			            <a id="A4" href="~/Game/Stock.aspx" runat="server" title=""  visible=<%# Eval("Run")%> >Запасы</a>
    			            <a id="A5" href="~/Game/Plan.aspx" runat="server" title=""  visible=<%# Eval("Run")%> >Планировщик</a>
 
-   			            <a id="A6" href="~/Game/Market.aspx" runat="server" title=""  visible=<%# Eval("Run")%> >Ваши рыночные предложения</a>
+   			            <a id="A6" href="~/Game/Market.aspx" runat="server" title=""  visible=<%# Eval("Run")%> >Обмен</a>
    			            <a id="A8" href="~/Game/AllMarket.aspx" runat="server" title=""  visible=<%# Eval("Run")%> >Рынок</a>
 
    			            <a id="A9" href="~/Game/Inventions.aspx" runat="server" title=""  visible=<%# Eval("Run")%> >Изобретения</a>
@@ -98,6 +98,11 @@
                             <tr>
                                 <td>
                                    <%# Eval("CityName")%> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                   <%# Eval("CurrentDate")%> 
                                 </td>
                             </tr>
                             <tr>

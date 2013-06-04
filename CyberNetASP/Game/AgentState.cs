@@ -117,6 +117,11 @@ namespace CyberNet
 		{
 			get { return intelligence; }
 		}
+		private string currentDate;
+		public string CurrentDate
+		{
+			get { return currentDate; }
+		}
 
 		private List<AgentState> GetStateInner()
 		{
@@ -145,6 +150,7 @@ namespace CyberNet
 			CurrentInstance.cheerfulness = Convert.ToInt32(((MySqlDataReader)argReader)["Cheerfulness"]).ToString();
 			CurrentInstance.force = Convert.ToInt32(((MySqlDataReader)argReader)["Force"]).ToString();
 			CurrentInstance.intelligence = Convert.ToInt32(((MySqlDataReader)argReader)["Intelligence"]).ToString();
+			CurrentInstance.currentDate = ((MySqlDataReader)argReader)["CurrentDate"].ToString();
 		}
 
 	}

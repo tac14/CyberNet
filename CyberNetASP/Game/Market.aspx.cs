@@ -132,5 +132,23 @@ namespace CyberNet.Game
 			LotList.DataBind();
 		}
 
+		public void Exchange(Object sender, EventArgs e)
+		{
+			for (int i = 0; i < ExchangeList.Items.Count; i++)
+			{
+				CheckBox locCheckBox = ExchangeList.Items[i].FindControl("CheckExchange") as CheckBox;
+				if (locCheckBox.Checked == true)
+				{
+					Label locID1 = ExchangeList.Items[i].FindControl("ID1") as Label;
+					Label locID2 = ExchangeList.Items[i].FindControl("ID2") as Label;
+					Label locEID2 = ExchangeList.Items[i].FindControl("eID2") as Label;
+
+					Database locDB = new Database();
+					locDB.Exec("CalcExchange(" + locID1.Text + ", " + locID2.Text + ", " + locEID2.Text + ")");
+				}
+			}
+			DataBind();
+		}
+
 	}
 }

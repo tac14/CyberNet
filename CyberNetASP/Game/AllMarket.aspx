@@ -32,7 +32,10 @@
                      <%# Eval("Column3")%>
                  </td>
                  <td style="padding-left: 5px; padding-right: 5px; font-size: medium;"><%# Eval("Column4")%></td>
-                 <td style="padding-left: 5px; padding-right: 5px; text-align: center;"><%# Eval("Column5")%></td>
+
+                 <td style="padding-left: 5px; padding-right: 5px; text-align: center;" runat="server" visible= <%# Eval("Column9")%> ><%# Eval("Column5")%></td>
+                 <td style="padding-left: 5px; padding-right: 5px; text-align: center; color: red;" runat="server" visible= <%# Eval("Column10")%> ><%# Eval("Column5")%></td>
+
                  <td style="padding-left: 5px; padding-right: 5px; text-align: center;"><%# Eval("Column6")%></td>
                  <td style="padding-left: 5px; padding-right: 5px; text-align: center;"><%# Eval("Column7")%></td>
                  <td style="padding-left: 5px; padding-right: 5px; text-align: center;"><%# Eval("Column8")%></td>
