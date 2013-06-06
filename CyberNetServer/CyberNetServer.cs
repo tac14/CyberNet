@@ -256,13 +256,13 @@ namespace CyberNet
 
         }
 
-		public void ConectDB()
+		public void ConectDB(string argCommand)
 		{
 			MySqlCommand command = new MySqlCommand(); ;
 			string connectionString, commandString;
 			connectionString = "Data source=localhost;UserId=root;Password=nt[yj14;database=CyberNetDB;";
 			MySqlConnection connection = new MySqlConnection(connectionString);
-			commandString = "SELECT * FROM Test;";
+			commandString = argCommand;
 			command.CommandText = commandString;
 			command.Connection = connection;
 			MySqlDataReader reader;
@@ -270,11 +270,11 @@ namespace CyberNet
 			{
 				command.Connection.Open();
 				reader = command.ExecuteReader();
-				while (reader.Read())
+				/*while (reader.Read())
 				{
 					int ID = (int)reader["ID"];
 					string Name = (string)reader["Name"];
-				}
+				}*/
 				reader.Close();
 			}
 			catch (MySqlException ex)
@@ -374,13 +374,14 @@ namespace CyberNet
 				stopWatch.Start();
 				stopWatch2.Start();
 
+				ConectDB("call CallStepForAllAgent()");
 				Console.WriteLine("NextTime {0}", DateTime.Now.Date.ToShortDateString() + " " + DateTime.Now.TimeOfDay.ToString());
 
 				stopWatch.Stop();
 
 				TimeSpan ts = stopWatch.Elapsed;
 
-				int time = 60000 - (int)ts.TotalMilliseconds; // 60000 - 1 минута
+				int time = 60000 * 60 - (int)ts.TotalMilliseconds; // 60000 - 1 минута
 				if (time > 0)
 				{
 					Thread.Sleep(time); // 1 час

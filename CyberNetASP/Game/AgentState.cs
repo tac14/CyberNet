@@ -63,6 +63,7 @@ namespace CyberNet
 
 			Plan.AgentName = CurrentInstance.Name;
 			Market.AgentName = CurrentInstance.Name;
+			Inventions.AgentName = CurrentInstance.Name;
 
 			return CurrentInstance;
 		}
@@ -122,6 +123,19 @@ namespace CyberNet
 		{
 			get { return currentDate; }
 		}
+		private string bonusStepCount;
+		public string BonusStepCount
+		{
+			get { return bonusStepCount; }
+		}
+		public int BonusStepCountInt;
+
+		private string dead;
+		public string Dead
+		{
+			get { return dead; }
+		}
+		
 
 		private List<AgentState> GetStateInner()
 		{
@@ -151,6 +165,9 @@ namespace CyberNet
 			CurrentInstance.force = Convert.ToInt32(((MySqlDataReader)argReader)["Force"]).ToString();
 			CurrentInstance.intelligence = Convert.ToInt32(((MySqlDataReader)argReader)["Intelligence"]).ToString();
 			CurrentInstance.currentDate = ((MySqlDataReader)argReader)["CurrentDate"].ToString();
+			CurrentInstance.bonusStepCount = "Бонусный ход (" + ((MySqlDataReader)argReader)["BonusStepCount"].ToString() + ")";
+			CurrentInstance.BonusStepCountInt = Convert.ToInt32(((MySqlDataReader)argReader)["BonusStepCount"].ToString());
+			CurrentInstance.dead = ((MySqlDataReader)argReader)["Dead"].ToString();
 		}
 
 	}

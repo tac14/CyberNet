@@ -72,6 +72,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Game\AllMarket.aspx" />
     <Content Include="Game\Inventions.aspx" />
+    <Content Include="Game\Inventions2.aspx" />
     <Content Include="Game\Market.aspx" />
     <Content Include="Game\Plan.aspx" />
     <Content Include="Game\Stock.aspx" />
@@ -154,6 +155,14 @@
     </Compile>
     <Compile Include="Game\Inventions.aspx.designer.cs">
       <DependentUpon>Inventions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Game\Inventions.cs" />
+    <Compile Include="Game\Inventions2.aspx.cs">
+      <DependentUpon>Inventions2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Game\Inventions2.aspx.designer.cs">
+      <DependentUpon>Inventions2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Game\Market.aspx.cs">
       <DependentUpon>Market.aspx</DependentUpon>

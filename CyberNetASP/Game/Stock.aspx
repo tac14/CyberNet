@@ -10,12 +10,12 @@
                     У вас еще ничего нет  
                 </emptydatatemplate>
                 <LayoutTemplate>
-                <table id="stocktable">
+                <table id="stocktable" style="border: double 6px #A55129; margin-left: auto; margin-right: auto;" cellspacing="0" cellpadding="5" rules="all">
                     <thead>
                         <tr>
                             <th>Название</th>
-                            <th>Качество</th>
                             <th>Количество</th>
+                            <th>Качество</th>
                         </tr>
                     </thead>
                     <tbody id="itemPlaceholder" runat="server"></tbody>
@@ -27,10 +27,10 @@
                             <asp:Label runat="server" Text='<% #Eval("ProductName")%>'></asp:Label>
                         </td>
                         <td>
-                            <asp:Label ID="Label1" runat="server" Text='<% #Eval("Quality")%>'></asp:Label>
+                            <asp:Label ID="Label2" runat="server" Text='<% #Eval("Count")%>'></asp:Label>
                         </td>
                         <td>
-                            <asp:Label ID="Label2" runat="server" Text='<% #Eval("Count")%>'></asp:Label>
+                            <asp:Label ID="Label1" runat="server" Text='<% #Eval("Quality")%>'></asp:Label>
                         </td>
                     </tr>
                 </ItemTemplate>

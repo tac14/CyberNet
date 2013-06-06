@@ -8,10 +8,11 @@ using MySql.Data.MySqlClient;
 
 namespace CyberNet.Game
 {
-	public partial class Inventions : System.Web.UI.Page
+	public partial class InventionsLayout : System.Web.UI.Page
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
+
 			int OldIndex = CategoryType.SelectedIndex;
 			CategoryType.DataSource = CreateCategoryTypeSource();
 			CategoryType.DataTextField = "TextField";
@@ -25,37 +26,6 @@ namespace CyberNet.Game
 			ActionList.DataValueField = "ValueField";
 			ActionList.DataBind();
 			ActionList.SelectedIndex = OldIndex2;
-			int OldIndex3 = ActionList2.SelectedIndex;
-			ActionList2.DataSource = CreateActionListDataSource();
-			ActionList2.DataTextField = "TextField";
-			ActionList2.DataValueField = "ValueField";
-			ActionList2.DataBind();
-			ActionList2.SelectedIndex = OldIndex3;
-			int OldIndex4 = ActionList3.SelectedIndex;
-			ActionList3.DataSource = CreateActionListDataSource();
-			ActionList3.DataTextField = "TextField";
-			ActionList3.DataValueField = "ValueField";
-			ActionList3.DataBind();
-			ActionList3.SelectedIndex = OldIndex4;
-
-			int OldIndex5 = ProductList.SelectedIndex;
-			ProductList.DataSource = CreateProductListDataSource();
-			ProductList.DataTextField = "TextField";
-			ProductList.DataValueField = "ValueField";
-			ProductList.DataBind();
-			ProductList.SelectedIndex = OldIndex5;
-			int OldIndex6 = ProductList2.SelectedIndex;
-			ProductList2.DataSource = CreateProductListDataSource2();
-			ProductList2.DataTextField = "TextField";
-			ProductList2.DataValueField = "ValueField";
-			ProductList2.DataBind();
-			ProductList2.SelectedIndex = OldIndex6;
-			int OldIndex7 = ProductList3.SelectedIndex;
-			ProductList3.DataSource = CreateProductListDataSource2();
-			ProductList3.DataTextField = "TextField";
-			ProductList3.DataValueField = "ValueField";
-			ProductList3.DataBind();
-			ProductList3.SelectedIndex = OldIndex7;
 
 
 		}
@@ -64,16 +34,6 @@ namespace CyberNet.Game
 		{
 			Database locDB = new Database();
 			return locDB.GetDataSource("GetAllActions ('" + (string)Session["UserName"] + "')");
-		}
-		DataView CreateProductListDataSource()
-		{
-			Database locDB = new Database();
-			return locDB.GetDataSource("GetAgentProduct ('" + (string)Session["UserName"] + "')");
-		}
-		DataView CreateProductListDataSource2()
-		{
-			Database locDB = new Database();
-			return locDB.GetDataSource("GetAgentProduct2 ('" + (string)Session["UserName"] + "')");
 		}
 
 		DataView CreateCategoryTypeSource()
@@ -128,10 +88,10 @@ namespace CyberNet.Game
 					DataBind();
 					ActionList.DataSource = CreateActionListDataSource();
 					ActionList.DataBind();
-					ActionList2.DataSource = CreateActionListDataSource();
+					/*ActionList2.DataSource = CreateActionListDataSource();
 					ActionList2.DataBind();
 					ActionList3.DataSource = CreateActionListDataSource();
-					ActionList3.DataBind();
+					ActionList3.DataBind();*/
 				}
 				else
 				{
@@ -172,6 +132,12 @@ namespace CyberNet.Game
 					Label locError = NewRaw.FindControl("Error2") as Label;
 					locError.Visible = false;
 					DataBind();
+					/*ProductList.DataSource = CreateProductListDataSource();
+					ProductList.DataBind();
+					ProductList2.DataSource = CreateProductListDataSource2();
+					ProductList2.DataBind();
+					ProductList3.DataSource = CreateProductListDataSource2();
+					ProductList3.DataBind();*/
 				}
 				else
 				{
@@ -200,6 +166,12 @@ namespace CyberNet.Game
 					Label locError = NewProduct.FindControl("Error3") as Label;
 					locError.Visible = false;
 					DataBind();
+					/*ProductList.DataSource = CreateProductListDataSource();
+					ProductList.DataBind();
+					ProductList2.DataSource = CreateProductListDataSource2();
+					ProductList2.DataBind();
+					ProductList3.DataSource = CreateProductListDataSource2();
+					ProductList3.DataBind();*/
 				}
 				else
 				{
@@ -211,30 +183,6 @@ namespace CyberNet.Game
 			}
 		}
 
-		public void ProductListChange(Object sender, EventArgs e)
-		{
-		}
-		public void RawListChange1(Object sender, EventArgs e)
-		{
-		}
-		public void RawListChange2(Object sender, EventArgs e)
-		{
-		}
-
-		public void AddFastAction(Object sender, EventArgs e)
-		{
-		}
-
-		public void ActionIFListChange(Object sender, EventArgs e)
-		{
-		}
-
-		public void AddIFAction(Object sender, EventArgs e)
-		{
-		}
-		public void AddIFAction2(Object sender, EventArgs e)
-		{
-		}
 
 	}
 }

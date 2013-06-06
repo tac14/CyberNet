@@ -78,7 +78,8 @@
    			            <a id="A8" href="~/Game/AllMarket.aspx" runat="server" title=""  visible=<%# Eval("Run")%> >Рынок</a>
 
    			            <a id="A9" href="~/Game/Inventions.aspx" runat="server" title=""  visible=<%# Eval("Run")%> >Изобретения</a>
-                        <a id="A7" href="~/JSClient/index.html" runat="server" title=""   visible=<%# Eval("Run")%>>Онтологический граф</a>
+   			            <a id="A10" href="~/Game/Inventions2.aspx" runat="server" title=""  visible=<%# Eval("Run")%> >Лицензии</a>
+                        <%--<a id="A7" href="~/JSClient/index.html" runat="server" title=""   visible=<%# Eval("Run")%>>Онтологический граф</a>--%>
                     </ItemTemplate>
                 </asp:DataList>  
 	    </div>	
@@ -105,17 +106,17 @@
                                    <%# Eval("CurrentDate")%> 
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                     <br>
-                                     <asp:Button id="Button1" Text="Следующий ход" OnClick="NextStep" runat="server"/>
-                                     <br>
+                            <tr runat="server" id="Dead" visible="false">
+                                <td style="padding: 5px; background-color:blue; color:red; font-weight:bold;">
+                                   Ваш агент мертв
                                 </td>
                             </tr>
-                            <tr>
+                            <tr runat="server" id="BonusButton" visible="false">
                                 <td>
                                      <br>
-                                     <asp:Button id="Button2" Text="Начать заново" OnClick="Reset" runat="server"/>
+                                     <asp:Button style="padding: 5px; background-color:blue; color:white; font-weight:bold;"  
+                                         id="Button1" Text=<%# Eval("BonusStepCount")%>  OnClick="NextStep" runat="server"
+                                         OnClientClick="return confirm('Вы запросили пересчет ситуации в ознакомительном режиме (иначе ход делается каждый час). Подтвердите, что Вы готовы потратить один бонусный ход. ')" />
                                      <br>
                                 </td>
                             </tr>
@@ -182,6 +183,15 @@
                                         <input class="knob" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#66EE66" data-readOnly=true
                                                             data-width="100" data-max="1000" value=<%# Eval("Intelligence")%> readonly="readonly" />
                                     </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                     <br>
+                                     <asp:Button style="padding: 5px; background-color:blue; color:white; font-weight:bold;"  
+                                         id="Button2" Text="Начать заново" OnClick="Reset" runat="server"
+                                         OnClientClick="return confirm('Вы уверены, что хотите начать игру заново?')"  />
+                                     <br>
                                 </td>
                             </tr>
                         </table>

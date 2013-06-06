@@ -1,7 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Inventions.aspx.cs" Inherits="CyberNet.Game.Inventions" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Inventions.aspx.cs" Inherits="CyberNet.Game.InventionsLayout" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
 
     <p  style="text-align:left; font-size:large; color: black;">
         Ввести новое действие:
@@ -114,95 +115,5 @@
     </table>    
     <p></p>        
 
-    <p  style="text-align:left; font-size:large; color: black;">
-        Изобрести вариант изготовления продукта:
-    </p>        
-    <table>
-        <tr>
-            <td style="padding: 5px; text-align:left; font-size:smaller; font-style:italic;">Стоит ? очков интеллекта</td>
-        </tr>
-        <tr>
-            <td style="padding: 5px;text-align:left;">Выберите продукт:</td>
-            <td style="padding: 5px;">
-                <asp:DropDownList ID="ProductList"  runat="server" AutoPostBack="True" OnSelectedIndexChanged="ProductListChange"> </asp:DropDownList>
-            </td>
-        </tr>
-    </table>    
-    <p></p>        
-
-    <p  style="text-align:left; color: black;">
-        Добавление простого действия:
-    </p>        
-    <table>
-        <tr>
-            <td style="padding: 5px;text-align:left;">Какое сырье нужно:</td>
-            <td style="padding: 5px;">
-                <asp:DropDownList ID="ProductList2"  runat="server" AutoPostBack="True" OnSelectedIndexChanged="RawListChange1"> </asp:DropDownList>
-            </td>
-            <td style="padding: 5px;text-align:left;">Сколько единиц:</td>
-            <td style="padding: 5px;">
-                <asp:TextBox ID="TextBox2"  runat="server" Text="1.00" Width="80" style="text-align:right;"  />
-            </td>
-        </tr>
-        <tr>
-            <td style="padding: 5px;text-align:left;">Какое действие надо выполнить над сырьем:</td>
-            <td style="padding: 5px;">
-                <asp:DropDownList ID="ActionList2"  runat="server" AutoPostBack="True" OnSelectedIndexChanged="ActionListChange"> </asp:DropDownList>
-            </td>
-            <td style="padding: 5px;">
-                <asp:Button id="Button1" Text="Добавить" OnClick="AddFastAction" runat="server" />
-            </td>
-        </tr>
-    </table>    
-    <p></p>        
-    <p  style="color: blue;">
-        Список простых действий, которые нужны для изготовления продукта:
-    </p>        
-    <p></p>        
-    <p  style="text-align:left; color: black;">
-        Добавление сложного действия:
-    </p>        
-    <p></p>        
-    <table>
-        <tr>
-            <td style="padding: 5px;text-align:left;">Какое действие надо выполнить над сырьем:</td>
-            <td style="padding: 5px;">
-                <asp:DropDownList ID="ActionList3"  runat="server" AutoPostBack="True" OnSelectedIndexChanged="ActionListChange"> </asp:DropDownList>
-            </td>
-            <td style="padding: 5px;">
-                <asp:Button id="Button2" Text="Добавить" OnClick="AddIFAction" runat="server" />
-            </td>
-        </tr>
-    </table>    
-    <p></p>        
-    <p  style="text-align:left; color: black;">
-        Добавление условия выполнения действия:
-    </p>        
-    <table>
-        <tr>
-            <td style="padding: 5px;text-align:left;">Выберите № действия:</td>
-            <td style="padding: 5px;">
-                <asp:DropDownList ID="DropDownList1"  runat="server" AutoPostBack="True" OnSelectedIndexChanged="ActionIFListChange"> </asp:DropDownList>
-            </td>
-        </tr>
-        <tr>
-            <td style="padding: 5px;text-align:left;">Какое сырье нужно:</td>
-            <td style="padding: 5px;">
-                <asp:DropDownList ID="ProductList3"  runat="server" AutoPostBack="True" OnSelectedIndexChanged="RawListChange2"> </asp:DropDownList>
-            </td>
-            <td style="padding: 5px;text-align:left;">Сколько единиц:</td>
-            <td style="padding: 5px;">
-                <asp:TextBox ID="TextBox5"  runat="server" Text="1.00" Width="80" style="text-align:right;" />
-            </td>
-            <td style="padding: 5px;">
-                <asp:Button id="Button3" Text="Добавить" OnClick="AddIFAction2" runat="server" />
-            </td>
-        </tr>
-    </table>    
-    <p></p>        
-    <p  style="color: blue;">
-        Список сложных действий с условиями, которые необходимы для выполнения этого действия:
-    </p>        
-    <p></p>        
 
 </asp:Content>

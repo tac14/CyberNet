@@ -34,7 +34,17 @@ namespace CyberNet
 					locState.Name = Context.User.Identity.Name;
 					DataBind();
 				}
+				if (locState.BonusStepCountInt > 0)
+				{
+					RptArt.Items[0].FindControl("BonusButton").Visible = true;
+				}
+				if (locState.Dead == "1")
+				{
+					RptArt.Items[0].FindControl("Dead").Visible = true;
+				}
+
 			}
+
 
 			//if (PreviousPage != null)
 			//{
@@ -48,7 +58,7 @@ namespace CyberNet
 		public void NextStep(Object sender, EventArgs e)
 		{
 			Database locDB = new Database();
-			locDB.Exec("CalcStep('" + AgentState.GetInstance((string)Session["UserName"]).Name + "')");
+			locDB.Exec("CalcStep('" + AgentState.GetInstance((string)Session["UserName"]).Name + "', true)");
 			DataBind();
 		}
 		public void Reset(Object sender, EventArgs e)
