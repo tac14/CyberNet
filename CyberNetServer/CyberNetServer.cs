@@ -374,7 +374,7 @@ namespace CyberNet
 				stopWatch.Start();
 				stopWatch2.Start();
 
-				ConectDB("call CallStepForAllAgent()");
+				//ConectDB("call CallStepForAllAgent()");
 				Console.WriteLine("NextTime {0}", DateTime.Now.Date.ToShortDateString() + " " + DateTime.Now.TimeOfDay.ToString());
 
 				stopWatch.Stop();
@@ -394,11 +394,18 @@ namespace CyberNet
 
     }
 
+	/*
     public class TestMain 
 	{
         public static int Main(String[] args) 
 		{
 			MyHttpServer httpServer = new MyHttpServer(8081);
+
+			Console.CursorVisible = false;
+			Console.CancelKeyPress += Console_CancelKeyPress;
+			Console.BackgroundColor = ConsoleColor.Blue;
+			Console.ForegroundColor = ConsoleColor.White;
+			//Console.
 
 			//httpServer.ConectDB();
 			//httpServer.JSONTest();
@@ -413,7 +420,13 @@ namespace CyberNet
             return 0;
         }
 
-    }
+		static void Console_CancelKeyPress(object sender, ConsoleCancelEventArgs e)
+		{
+			Console.WriteLine("NoExit");
+			e.Cancel = true;
+		}
+
+    }*/
 
 }
 
