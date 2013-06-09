@@ -134,6 +134,13 @@
      <span  style="margin-left: auto; margin-right: auto; font-size:large; color: black;">
         Доступные варианты обмена:
     </span>
+    <table runat="server" visible="false" id="DealLimit">
+        <tr>
+            <td style="padding: 2px; text-align:left; color: red;">
+                При осуществлении одной или более сделок Вами или вашим партнером превышен лимит числа сделок. За 6 игровых часов можно осуществить не более 10 сделок.
+            </td>
+        </tr>
+    </table>
         <asp:ListView ID="ExchangeList" runat="server" DataSourceID="ExchangeVariant">
            <LayoutTemplate>
               <table style="border: double 6px #A55129; margin-left: auto; margin-right: auto;" cellspacing="0" cellpadding="5" rules="all">

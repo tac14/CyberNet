@@ -374,7 +374,7 @@ namespace CyberNet
 				stopWatch.Start();
 				stopWatch2.Start();
 
-				//ConectDB("call CallStepForAllAgent()");
+				ConectDB("call CallStepForAllAgent()");
 				Console.WriteLine("NextTime {0}", DateTime.Now.Date.ToShortDateString() + " " + DateTime.Now.TimeOfDay.ToString());
 
 				stopWatch.Stop();

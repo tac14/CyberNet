@@ -7,6 +7,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using CyberNet;
 
+using MySql.Data.MySqlClient;
+
 namespace CyberNet.Game
 {
 	public partial class MarketLayout : System.Web.UI.Page
@@ -44,7 +46,7 @@ namespace CyberNet.Game
 		DataView CreateProductDataSource()
 		{
 			Database locDB = new Database();
-			return locDB.GetDataSource("GetAllProduct");
+			return locDB.GetDataSource("GetAllProduct2");
 		}
 
 		DataView CreateLotListDataSource()
@@ -134,6 +136,7 @@ namespace CyberNet.Game
 
 		public void Exchange(Object sender, EventArgs e)
 		{
+			DealLimit.Visible = false;
 			for (int i = 0; i < ExchangeList.Items.Count; i++)
 			{
 				CheckBox locCheckBox = ExchangeList.Items[i].FindControl("CheckExchange") as CheckBox;
@@ -144,11 +147,21 @@ namespace CyberNet.Game
 					Label locEID2 = ExchangeList.Items[i].FindControl("eID2") as Label;
 
 					Database locDB = new Database();
-					locDB.Exec("CalcExchange(" + locID1.Text + ", " + locID2.Text + ", " + locEID2.Text + ")");
+					locDB.ConectDB("CalcExchange(" + locID1.Text + ", " + locID2.Text + ", " + locEID2.Text + ")", ReaderExchange);
 				}
 			}
 			DataBind();
 		}
+
+		public void ReaderExchange(object argReader, EventArgs e)
+		{
+			int IsOk = Convert.ToInt32( ((MySqlDataReader)argReader)["IsOk"].ToString());
+			if (IsOk == -1)
+			{
+				DealLimit.Visible = true;
+			}
+		}
+
 
 	}
 }

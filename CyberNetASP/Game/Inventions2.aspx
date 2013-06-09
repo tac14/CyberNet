@@ -67,6 +67,9 @@
                     Text="Запросить лицензию" OnClick="RequestLicense" runat="server"
                     OnClientClick="return confirm('Вы уверены, что закончили работу над Вашим изобретением?')" />
             </td>
+            <td style="padding: 5px; text-align:left; font-size:smaller; color: red; font-weight:bold;" > 
+                <asp:Label ID="LicenseStatus" runat="server" visible="false" Text=""></asp:Label>
+            </td>
         </tr>
     </table>    
     <p></p>        

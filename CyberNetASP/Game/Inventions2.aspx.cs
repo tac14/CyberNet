@@ -205,6 +205,29 @@ namespace CyberNet.Game
 		public void ReaderCost(object argReader, EventArgs e)
 		{
 			Cost.Text = ((MySqlDataReader)argReader)["Cost"].ToString();
+
+			// Status, LicenseType, GivingDate, ExpiresDate ;
+			string locStatus = ((MySqlDataReader)argReader)["Status"].ToString();
+			if (locStatus != "")
+			{
+				string locLicenseType = ((MySqlDataReader)argReader)["LicenseType"].ToString();
+				string locGivingDate = ((MySqlDataReader)argReader)["GivingDate"].ToString();
+				string locExpiresDate = ((MySqlDataReader)argReader)["ExpiresDate"].ToString();
+
+				LicenseStatus.Visible = true;
+
+				if (locLicenseType == "0")
+				{
+					LicenseStatus.Text = "Ваша лицензия " + locStatus;
+				}
+				else
+				{
+					LicenseStatus.Text = "Ваша лицензия " + locStatus + " (получена " + locGivingDate + "/истекает)" + locExpiresDate;
+				
+				}
+
+			}
+
 		}
 
 		public void DeleteFastActions(Object sender, EventArgs e)
