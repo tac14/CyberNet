@@ -287,22 +287,59 @@ namespace CyberNet
 			}
 		}
 
+		ArrayList Countries = new ArrayList();
 
 		public void SaveCity(string argName)
 		{
-			MySqlCommand command = new MySqlCommand(); ;
-			string connectionString, commandString;
+			int IndexB = argName.IndexOf("(");
+			int IndexE = argName.IndexOf(")");
+
+			string City = argName.Substring(0, IndexB);
+			string Country = argName.Substring(IndexB+1, IndexE - IndexB - 1);
+			int CountryID = -1;
+
+			bool IsFound = false;
+			for (int i = 0; i < Countries.Count; i++)
+			{
+				if ((string)Countries[i] == Country)
+				{
+					IsFound = true;
+					CountryID = i + 1;
+					break;
+				}
+			}
+			if (CountryID == -1)
+			{
+				Countries.Add(Country);
+				CountryID = Countries.Count;
+			}
+
+
+			string connectionString;
 			connectionString = "Data source=localhost;UserId=root;Password=nt[yj14;database=CyberNetDB;";
 			MySqlConnection connection = new MySqlConnection(connectionString);
-			commandString = "INSERT Cities (Name) VALUES('"+argName+"');";
+
+			string commandString = "INSERT Cities (Name, CountryID) VALUES('" + City + "', " + CountryID + ");";
+			MySqlCommand command = new MySqlCommand(); ;
 			command.CommandText = commandString;
 			command.Connection = connection;
-			MySqlDataReader reader;
+
+			string commandString2 = "INSERT Countries (Name) VALUES('" + Country + "');";
+			MySqlCommand command2 = new MySqlCommand(); ;
+			command2.CommandText = commandString2;
+			command2.Connection = connection;
+
 			try
 			{
 				command.Connection.Open();
-				reader = command.ExecuteReader();
+				MySqlDataReader reader = command.ExecuteReader();
 				reader.Close();
+				//command2.Connection.Open();
+				if (IsFound == false)
+				{
+					MySqlDataReader reader2 = command2.ExecuteReader();
+					reader2.Close();
+				}
 			}
 			catch (MySqlException ex)
 			{
@@ -311,6 +348,7 @@ namespace CyberNet
 			finally
 			{
 				command.Connection.Close();
+				command2.Connection.Close();
 			}
 		}
 
@@ -326,6 +364,7 @@ namespace CyberNet
 				{
 					SaveCity(locFile2[i]);
 				}
+				Console.WriteLine(locFile1[i]);
 			}
 
 		}

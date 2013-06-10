@@ -87,17 +87,17 @@ namespace CyberNet
 			//Console.CancelKeyPress += Console_CancelKeyPress;
 			Console.BackgroundColor = ConsoleColor.Blue;
 			Console.ForegroundColor = ConsoleColor.White;
-			//Console.
 
 			//httpServer.ConectDB();
 			//httpServer.JSONTest();
-			//httpServer.SaveCities();
+			httpServer.SaveCities();
 
+			/*
 			Thread thread = new Thread(new ThreadStart(httpServer.listen));
 			thread.Start();
 
 			Thread locTimeThread = new Thread(new ThreadStart(httpServer.NextTime));
-			locTimeThread.Start();
+			locTimeThread.Start();*/
 
 
 		}
