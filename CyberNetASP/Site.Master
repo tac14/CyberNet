@@ -79,6 +79,7 @@
 
    			            <a id="A9" href="~/Game/Inventions.aspx" runat="server" title=""  visible=<%# Eval("Run")%> >Изобретения</a>
    			            <a id="A10" href="~/Game/Inventions2.aspx" runat="server" title=""  visible=<%# Eval("Run")%> >Лицензии</a>
+   			            <a id="A7" href="~/Game/ActiveUsers.aspx" runat="server" title=""  visible=<%# Eval("Run")%> >Активные игроки</a>
                         <%--<a id="A7" href="~/JSClient/index.html" runat="server" title=""   visible=<%# Eval("Run")%>>Онтологический граф</a>--%>
                     </ItemTemplate>
                 </asp:DataList>  
