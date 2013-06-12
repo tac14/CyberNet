@@ -10,26 +10,29 @@ namespace CyberNet
 	public class Plan
 	{
 
-		private static Plan thisInstance;
-		public static string AgentName = "";
+		//private static Plan thisInstance;
+		private string AgentName = "";
 
 		public Plan(int a)
 		{
-			thisInstance = this;
+			//thisInstance = this;
 		}
 		public Plan()
 		{
 			int a = 1;
 		}
+		/*
 		public static Plan GetInstance()
 		{
 			return thisInstance;
-		}
+		}*/
 
 
-		public DataTable GetPlan()
+		public DataTable GetPlan(string argAgentName)
 		{
-			return GetInstance().GetPlanInner();
+			AgentName = argAgentName;
+			//return GetInstance().GetPlanInner();
+			return GetPlanInner();
 		}
 
 		DataTable locList;

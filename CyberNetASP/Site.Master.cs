@@ -27,7 +27,7 @@ namespace CyberNet
 				Session["UserName"] = Context.User.Identity.Name;
 
 				AgentState locState = AgentState.GetInstance((string)Session["UserName"]);
-				
+
 				// Это случай когда регистрация уже произошла
 				if (locState.Name != Context.User.Identity.Name)
 				{
@@ -38,11 +38,19 @@ namespace CyberNet
 				{
 					RptArt.Items[0].FindControl("BonusButton").Visible = true;
 				}
+				else
+				{
+					RptArt.Items[0].FindControl("BonusButton").Visible = false;
+				}
 				if (locState.Dead == "1")
 				{
 					RptArt.Items[0].FindControl("Dead").Visible = true;
 				}
 
+			}
+			else
+			{ 
+			
 			}
 
 

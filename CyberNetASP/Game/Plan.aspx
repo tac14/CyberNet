@@ -67,6 +67,10 @@
     <asp:ObjectDataSource ID="Plan1" runat="server"  
        SelectMethod="GetPlan" UpdateMethod="SaveList" TypeName="CyberNet.Plan">  
 
+        <selectparameters>
+            <asp:querystringparameter name="argAgentName" querystringfield="AgentName" defaultvalue="" />
+        </selectparameters>
+
         <UpdateParameters> 
             <asp:Parameter Name="ID" Type="Int32" />
             <asp:Parameter Name="SeqNumber" Type="Int32" />

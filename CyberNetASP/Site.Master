@@ -112,7 +112,7 @@
                                    Ваш агент мертв
                                 </td>
                             </tr>
-                            <tr runat="server" id="BonusButton" visible="false">
+                            <tr runat="server" id="BonusButton">
                                 <td>
                                      <br>
                                      <asp:Button style="padding: 5px; background-color:blue; color:white; font-weight:bold;"  

@@ -18,10 +18,16 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
         <asp:ObjectDataSource ID="MarketState" runat="server"  
-           SelectMethod="GetMarket" TypeName="CyberNet.Market">  
+               SelectMethod="GetMarket" TypeName="CyberNet.Market">  
+            <selectparameters>
+                <asp:querystringparameter name="argAgentName" querystringfield="AgentName" defaultvalue="" />
+            </selectparameters>
         </asp:ObjectDataSource>  
         <asp:ObjectDataSource ID="ExchangeVariant" runat="server"  
-           SelectMethod="GetExchangeVariant" TypeName="CyberNet.Market">  
+               SelectMethod="GetExchangeVariant" TypeName="CyberNet.Market">  
+            <selectparameters>
+                <asp:querystringparameter name="argAgentName" querystringfield="AgentName" defaultvalue="" />
+            </selectparameters>
         </asp:ObjectDataSource>  
 
     <p  style="text-align:left; font-size:large; color: black;">

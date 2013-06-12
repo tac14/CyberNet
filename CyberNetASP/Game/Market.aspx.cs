@@ -15,10 +15,15 @@ namespace CyberNet.Game
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			/*
 			if (Market.GetInstance() == null)
 			{
 				Market locMarket = new Market(1);
-			}
+			}*/
+			QueryStringParameter locParameters = (QueryStringParameter)MarketState.SelectParameters[0];
+			locParameters.DefaultValue = (string)Session["UserName"];
+			QueryStringParameter locParameters2 = (QueryStringParameter)ExchangeVariant.SelectParameters[0];
+			locParameters2.DefaultValue = (string)Session["UserName"];
 
 			int OldIndex = ProductList.SelectedIndex;
 			ProductList.DataSource = CreateProductDataSource();

@@ -12,10 +12,16 @@ namespace CyberNet.Game
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			
 			if (Inventions.GetInstance() == null)
 			{
 				Inventions locInventions = new Inventions(1);
 			}
+			QueryStringParameter locParameters = (QueryStringParameter)FastActionList.SelectParameters[0];
+			locParameters.DefaultValue = (string)Session["UserName"];
+			QueryStringParameter locParameters2 = (QueryStringParameter)IfActionList.SelectParameters[0];
+			locParameters2.DefaultValue = (string)Session["UserName"];
+
 
 			int OldIndex3 = ActionList2.SelectedIndex;
 			ActionList2.DataSource = CreateActionListDataSource();
@@ -136,7 +142,7 @@ namespace CyberNet.Game
 				string locProductListID = ProductList.SelectedItem.Value;
 
 				Inventions.GetInstance().CurrentProductID = locProductListID;
-				Inventions.GetInstance().GetFastAction();
+				Inventions.GetInstance().GetFastAction((string)Session["UserName"]);
 				Database locDB = new Database();
 				locDB.ConectDB("CalcLicenseCost( '" + (string)Session["UserName"] + "', " + Inventions.GetInstance().CurrentProductID +
 													", " + Inventions.GetInstance().LicenseType + ")", ReaderCost);
@@ -192,8 +198,8 @@ namespace CyberNet.Game
 
 					locDB.ConectDB("CalcLicenseCost( '" + (string)Session["UserName"] + "', " + Inventions.GetInstance().CurrentProductID +
 														", " + Inventions.GetInstance().LicenseType + ")", ReaderCost);
-					
-					Inventions.GetInstance().GetFastAction();
+
+					Inventions.GetInstance().GetFastAction((string)Session["UserName"]);
 					DataBind();
 					IfActionsNumberList1.DataSource = CreateIfActionsNumberListDataSource2();
 					IfActionsNumberList1.DataBind();
@@ -245,7 +251,7 @@ namespace CyberNet.Game
 														", " + Inventions.GetInstance().LicenseType + ")", ReaderCost);
 				}
 			}
-			Inventions.GetInstance().GetFastAction();
+			Inventions.GetInstance().GetFastAction((string)Session["UserName"]);
 			DataBind();
 			IfActionsNumberList1.DataSource = CreateIfActionsNumberListDataSource2();
 			IfActionsNumberList1.DataBind();
@@ -274,7 +280,7 @@ namespace CyberNet.Game
 					locDB.ConectDB("CalcLicenseCost( '" + (string)Session["UserName"] + "', " + Inventions.GetInstance().CurrentProductID +
 														", " + Inventions.GetInstance().LicenseType + ")", ReaderCost);
 
-					Inventions.GetInstance().GetIfAction();
+					Inventions.GetInstance().GetIfAction((string)Session["UserName"]);
 					DataBind();
 				}
 			}
@@ -297,7 +303,7 @@ namespace CyberNet.Game
 														", " + Inventions.GetInstance().LicenseType + ")", ReaderCost);
 				}
 			}
-			Inventions.GetInstance().GetIfAction();
+			Inventions.GetInstance().GetIfAction((string)Session["UserName"]);
 			DataBind();
 		}
 

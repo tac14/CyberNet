@@ -4,10 +4,16 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <asp:ObjectDataSource ID="FastActionList" runat="server"  
-        SelectMethod="GetFastAction" TypeName="CyberNet.Inventions">  
+            SelectMethod="GetFastAction" TypeName="CyberNet.Inventions">  
+        <selectparameters>
+            <asp:querystringparameter name="argAgentName" querystringfield="AgentName" defaultvalue="" />
+        </selectparameters>
     </asp:ObjectDataSource>  
     <asp:ObjectDataSource ID="IfActionList" runat="server"  
-        SelectMethod="GetIfAction" TypeName="CyberNet.Inventions">  
+            SelectMethod="GetIfAction" TypeName="CyberNet.Inventions">  
+        <selectparameters>
+            <asp:querystringparameter name="argAgentName" querystringfield="AgentName" defaultvalue="" />
+        </selectparameters>
     </asp:ObjectDataSource>  
 
     <asp:HiddenField ID="ConfirmResult" runat="server" />

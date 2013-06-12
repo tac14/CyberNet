@@ -61,9 +61,9 @@ namespace CyberNet
 				//AllAgent.Add(CurrentInstance);
 			}
 
-			Plan.AgentName = CurrentInstance.Name;
-			Market.AgentName = CurrentInstance.Name;
-			Inventions.AgentName = CurrentInstance.Name;
+			//Plan.AgentName = CurrentInstance.Name;
+			//Market.AgentName = CurrentInstance.Name;
+			//Inventions.AgentName = CurrentInstance.Name;
 
 			return CurrentInstance;
 		}

@@ -12,15 +12,23 @@ namespace CyberNet.Game
 {
 	public partial class PlanLayout : System.Web.UI.Page
 	{
+		/*
+		public string agentName = "test";
+		public string AgentName
+		{
+			get { return agentName; }
+		}*/
+		
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			Product locProduct = new Product(1);
 
+			/*
 			if (Plan.GetInstance() == null)
 			{
 				Plan locPlan = new Plan(1);
-			}
+			}*/
 
 			int OldIndex = ProductList.SelectedIndex;
 			ProductList.DataSource = CreateProductDataSource();
@@ -33,6 +41,10 @@ namespace CyberNet.Game
 
 			Product.SetProductID = "0";
 			Product.SetOptionID = 0;
+			
+			QueryStringParameter locParameters =  (QueryStringParameter)Plan1.SelectParameters[0];
+			locParameters.DefaultValue = (string)Session["UserName"];
+
 		}
 		DataView CreateProductDataSource()
 		{

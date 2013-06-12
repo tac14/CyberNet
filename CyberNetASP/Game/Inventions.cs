@@ -10,11 +10,12 @@ namespace CyberNet
 	public class Inventions
 	{
 		private static Inventions thisInstance;
-		public static string AgentName = "";
+		private string AgentName = "";
 
 		public string CurrentProductID;
 		public string LicenseType ="0";
 
+		
 		public Inventions(int a)
 		{
 			thisInstance = this;
@@ -23,14 +24,16 @@ namespace CyberNet
 		{
 			int a = 1;
 		}
+		
 		public static Inventions GetInstance()
 		{
 			return thisInstance;
 		}
 
 
-		public DataTable GetFastAction()
+		public DataTable GetFastAction(string argAgentName)
 		{
+			AgentName = argAgentName;
 			return GetInstance().GetFastActionInner();
 		}
 
@@ -68,8 +71,9 @@ namespace CyberNet
 
 		}
 
-		public DataTable GetIfAction()
+		public DataTable GetIfAction(string argAgentName)
 		{
+			AgentName = argAgentName;
 			return GetInstance().GetIfActionInner();
 		}
 

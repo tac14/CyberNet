@@ -9,26 +9,28 @@ namespace CyberNet
 {
 	public class Market
 	{
-		private static Market thisInstance;
-		public static string AgentName = "";
+		//private static Market thisInstance;
+		private string AgentName = "";
 
 		public Market(int a)
 		{
-			thisInstance = this;
+			//thisInstance = this;
 		}
 		public Market()
 		{
 			int a = 1;
 		}
+		/*
 		public static Market GetInstance()
 		{
 			return thisInstance;
-		}
+		}*/
 
 
-		public DataTable GetMarket()
+		public DataTable GetMarket(string argAgentName)
 		{
-			return GetInstance().GetMarketInner();
+			AgentName = argAgentName;
+			return GetMarketInner();
 		}
 
 		DataTable locList;
@@ -112,7 +114,7 @@ namespace CyberNet
 
 		public DataTable GetAllMarket()
 		{
-			return GetInstance().GetAllMarketInner();
+			return GetAllMarketInner();
 		}
 
 		private DataTable GetAllMarketInner()
@@ -172,9 +174,10 @@ namespace CyberNet
 
 		}
 
-		public DataTable GetExchangeVariant()
+		public DataTable GetExchangeVariant(string argAgentName)
 		{
-			return GetInstance().GetExchangeVariantInner();
+			AgentName = argAgentName;
+			return GetExchangeVariantInner();
 		}
 
 		private DataTable GetExchangeVariantInner()
