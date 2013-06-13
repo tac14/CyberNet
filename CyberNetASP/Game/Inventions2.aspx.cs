@@ -228,8 +228,7 @@ namespace CyberNet.Game
 				}
 				else
 				{
-					LicenseStatus.Text = "Ваша лицензия " + locStatus + " (получена " + locGivingDate + "/истекает)" + locExpiresDate;
-				
+					LicenseStatus.Text = "Ваша лицензия " + locStatus + " (получена " + locGivingDate + " / истекает " + locExpiresDate + ")";
 				}
 
 			}

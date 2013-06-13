@@ -65,16 +65,16 @@ namespace CyberNet
 
 
 
-		public DataTable GetProductVariant()
+		public DataTable GetProductVariant(string argAgentName)
 		{
-			return GetInstance().GetProductVariantInner();
+			return GetInstance().GetProductVariantInner(argAgentName);
 		}
 
 		DataTable locList;
 		public ArrayList VariantList;
 
 
-		private DataTable GetProductVariantInner()
+		private DataTable GetProductVariantInner(string argAgentName)
 		{
 			locList = new DataTable();
 			locList.Columns.Add(new DataColumn("OperationID", typeof(String)));
@@ -84,7 +84,7 @@ namespace CyberNet
 
 			VariantList = new ArrayList();
 			Database locDatabase = new Database();
-			locDatabase.ConectDB("GetGraph (" + SetProductID + ", " + SetOptionID.ToString() + ")", Reader);
+			locDatabase.ConectDB("GetGraph ('" + argAgentName + "', " + SetProductID + ", " + SetOptionID.ToString() + ")", Reader);
 
 
 			return locList;

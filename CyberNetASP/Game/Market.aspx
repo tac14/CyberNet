@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Market.aspx.cs" Inherits="CyberNet.Game.MarketLayout" %>
+﻿<%@ Page Title="Киберсеть-Обмен" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Market.aspx.cs" Inherits="CyberNet.Game.MarketLayout" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 

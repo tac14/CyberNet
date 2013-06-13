@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Inventions.aspx.cs" Inherits="CyberNet.Game.InventionsLayout" %>
+﻿<%@ Page Title="Киберсеть-Изобретения" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Inventions.aspx.cs" Inherits="CyberNet.Game.InventionsLayout" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -10,7 +10,7 @@
 
     <table runat="server" id="NewAction">
         <tr>
-            <td style="padding: 5px; text-align:left; font-size:smaller; font-style:italic;">Стоит 10 очков физ. силы и 5 очков интеллекта</td>
+            <td style="padding: 5px; text-align:left; font-size:smaller; font-style:italic;">Стоит 5 очков физ. силы и 2 очка интеллекта</td>
         </tr>
         <tr>
             <td style="padding: 5px; text-align:left; font-size:smaller; color: red;" > 
@@ -43,7 +43,7 @@
 
     <table runat="server" id="NewRaw">
         <tr>
-            <td style="padding: 5px; text-align:left; font-size:smaller; font-style:italic;">Стоит 25 очков физ. силы и 5 очков интеллекта</td>
+            <td style="padding: 5px; text-align:left; font-size:smaller; font-style:italic;">Стоит 10 очков физ. силы и 3 очка интеллекта</td>
         </tr>
         <tr>
             <td style="padding: 5px; text-align:left; font-size:smaller; color: red;" > 
@@ -82,7 +82,7 @@
     </p>        
     <table  runat="server" id="NewProduct">
         <tr>
-            <td style="padding: 5px; text-align:left; font-size:smaller; font-style:italic;">Стоит 25 очков интеллекта</td>
+            <td style="padding: 5px; text-align:left; font-size:smaller; font-style:italic;">Стоит 10 очков интеллекта</td>
         </tr>
         <tr>
             <td style="padding: 5px; text-align:left; font-size:smaller; color: red;" > 

@@ -44,6 +44,8 @@ namespace CyberNet.Game
 			
 			QueryStringParameter locParameters =  (QueryStringParameter)Plan1.SelectParameters[0];
 			locParameters.DefaultValue = (string)Session["UserName"];
+			QueryStringParameter locParameters2 = (QueryStringParameter)Product1.SelectParameters[0];
+			locParameters2.DefaultValue = (string)Session["UserName"];
 
 		}
 		DataView CreateProductDataSource()
@@ -86,7 +88,7 @@ namespace CyberNet.Game
 
 			// Вначале получим все варианты получения товара, чтобы заполнить OptionsList
 			Product.SetOptionID = 0;
-			Product.GetInstance().GetProductVariant();
+			Product.GetInstance().GetProductVariant((string)Session["UserName"]);
 
 			OptionsList.DataSource = CreateOptionsDataSource();
 			OptionsList.DataTextField = "TextField";

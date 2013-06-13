@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Домашняя страница" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="Киберсеть-Планировщик" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeBehind="Plan.aspx.cs" Inherits="CyberNet.Game.PlanLayout" %>
 <%@ Register TagPrefix="asp2" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit"%>
 
@@ -84,8 +84,10 @@
     </asp:ObjectDataSource>
 
     <asp:ObjectDataSource ID="Product1" runat="server"  
-       SelectMethod="GetProductVariant" TypeName="CyberNet.Product">  
-
+           SelectMethod="GetProductVariant" TypeName="CyberNet.Product">  
+        <selectparameters>
+            <asp:querystringparameter name="argAgentName" querystringfield="AgentName" defaultvalue="" />
+        </selectparameters>
     </asp:ObjectDataSource>
 
     <p align="left">
