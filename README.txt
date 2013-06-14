@@ -1,0 +1,2 @@
+﻿Economics Simulator
+Экономический симулятор
